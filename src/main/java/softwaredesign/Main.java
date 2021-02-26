@@ -4,10 +4,8 @@ import java.util.Stack;
 
 public class Main {
     public static void main (String[] args){
-        System.out.println("Welcome to Software Design");
-        System.out.println("This is assignment 1");
-
-        GameStateTest();
+        //GameStateTest();
+        MatrixTest();
 
         //GameManager game = new GameManager();
 
@@ -47,6 +45,15 @@ public class Main {
 
         //Uncomment this line will throw 'The buffer is full' error
         //gsStack.push(new GameState(gsStack.peek(), "error", 3));
+
+    }
+
+    public static void MatrixTest() {
+        String matrixTxt = "1c bd e9 55 e9\n1c 1c 1c e9 1c\n55 55 55 e9 1c\n55 55 1c bd 55\n1c 55 1c 55 1c";
+
+        Matrix m = new Matrix(matrixTxt);
+
+        m.printMatrix();
 
     }
 }
