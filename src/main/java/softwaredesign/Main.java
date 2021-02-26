@@ -6,6 +6,7 @@ public class Main {
     public static void main (String[] args){
         //GameStateTest();
         MatrixTest();
+        SeqTest();
 
         //GameManager game = new GameManager();
 
@@ -55,5 +56,14 @@ public class Main {
 
         m.printMatrix();
 
+    }
+
+    public static void SeqTest() {
+        String seqTxt = "e9 1c 1c\n" +
+                "1c 1c 1c\n" +
+                "1c bd e9";
+        Sequences seq = new Sequences(seqTxt);
+
+        seq.printSequences();
     }
 }

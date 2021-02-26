@@ -20,10 +20,6 @@ public class GameManager {
 
     }
 
-    private String puzzleMatrix(String matrixTxt){
-        return "";
-    }
-
     private int bufferSize(String sizeString){
         int size;
         try {
@@ -32,10 +28,6 @@ public class GameManager {
             throw new java.lang.Error("This is not a valid format for buffer size.");
         }
         return size;
-    }
-
-    private String puzzleSequences(String sequences){
-        return "";
     }
 
 }

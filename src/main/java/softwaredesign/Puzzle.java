@@ -1,19 +1,23 @@
 package softwaredesign;
 
 public class Puzzle {
-    private String currentFileName;
+    private final String currentFileName;
     private String bufferTxt;
     private String seqTxt;
     private String matrixTxt;
 
     public Puzzle(){
-        this.currentFileName = "";
+        this.currentFileName = choosePuzzle();
         this.bufferTxt = "";
-        this.seqTxt = "";
         this.matrixTxt = "";
+        this.seqTxt = "";
     }
 
-    public String getBufferTxt(){
+    private String choosePuzzle(){
+        return "";
+    }
+
+    public String getBufferSize(){
         String copy = new String(this.bufferTxt);
         return copy;
     }

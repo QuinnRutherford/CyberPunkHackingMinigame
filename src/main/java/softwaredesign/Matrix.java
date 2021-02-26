@@ -3,17 +3,20 @@ package softwaredesign;
 import java.util.Vector;
 
 public class Matrix {
-    private String[][] matrix;
+    private final String[][] matrix;
 
     public Matrix(String matrixTxt) {
         String[] lines = matrixTxt.split("\n");
+        String[] elements = lines[0].split(" ");
+        String[][] newMatrix = new String[lines.length][elements.length];
         for(int i = 0; i < lines.length; i++){
             String[] tmpRow = lines[i].split(" ");
-                if(i == 0) this.matrix = new String[lines.length][tmpRow.length];
+                if(i == 0) newMatrix = new String[lines.length][tmpRow.length];
             for(int j = 0; j < tmpRow.length; j++){
-                this.matrix[i][j] = tmpRow[j];
+                newMatrix[i][j] = tmpRow[j];
             }
         }
+        this.matrix = newMatrix;
     }
 
     private String[][] copyMatrix(String[][] original){
