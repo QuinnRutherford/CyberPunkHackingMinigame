@@ -1,4 +1,4 @@
 package softwaredesign;
 
-public class TestClass {
+public class MoveHistory {
 }
