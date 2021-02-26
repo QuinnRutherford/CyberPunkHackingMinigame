@@ -1,6 +1,6 @@
 package softwaredesign;
 
-public class Sequences {
+public final class Sequences {
     private final String[][] sequences;
 
     public Sequences(String seqTxt){

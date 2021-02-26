@@ -2,7 +2,7 @@ package softwaredesign;
 
 import java.util.Vector;
 
-public class Matrix {
+public final class Matrix {
     private final String[][] matrix;
 
     public Matrix(String matrixTxt) {
