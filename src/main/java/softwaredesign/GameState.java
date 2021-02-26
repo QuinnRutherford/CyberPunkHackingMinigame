@@ -6,7 +6,7 @@ public final class GameState {
         COL
     }
 
-    //true means row must be selected, false means colum
+    //true means row must be selected, false means column
     private rowCol axis;
     private int numRowCol;
     private Buffer buffer;
