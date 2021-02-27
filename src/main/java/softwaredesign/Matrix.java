@@ -22,7 +22,7 @@ public final class Matrix {
     private String[][] copyMatrix(String[][] original){
         String[][] copy = new String[original.length][original[0].length];
         for(int i = 0; i < original.length; i++){
-            for(int j = 0; i < original[0].length; j++){
+            for(int j = 0; j < original[0].length; j++){
                 copy[i][j] = original[i][j];
             }
         }
@@ -32,6 +32,9 @@ public final class Matrix {
     public String[][] getMatrix() {
         String[][] copy = copyMatrix(this.matrix);
         return copy;
+    }
+    public String getMatrixElement(int x, int y) {
+        return copyMatrix(this.matrix)[x][y];
     }
 
     public void printMatrix() {

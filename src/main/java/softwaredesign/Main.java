@@ -50,6 +50,8 @@ public class Main {
 
         Matrix m = new Matrix(matrixTxt);
 
+        System.out.println(m.getMatrixElement(0, 1));
+
         m.printMatrix();
 
     }
