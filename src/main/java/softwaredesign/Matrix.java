@@ -1,7 +1,5 @@
 package softwaredesign;
 
-import java.util.Vector;
-
 public final class Matrix {
     private final String[][] matrix;
 
