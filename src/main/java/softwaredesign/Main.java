@@ -5,7 +5,7 @@ import java.util.Stack;
 public class Main {
     public static void main (String[] args){
         //GameStateTest();
-        MatrixTest();
+        //MatrixTest();
         SeqTest();
 
         //GameManager game = new GameManager();
@@ -64,6 +64,9 @@ public class Main {
                 "1c bd e9";
         Sequences seq = new Sequences(seqTxt);
 
+        //TODO: fix this
+        seq.getNSeq(1);
         seq.printSequences();
     }
+
 }

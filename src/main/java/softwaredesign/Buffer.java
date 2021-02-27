@@ -23,7 +23,7 @@ public final class Buffer {
             }
             this.buffer[this.size-1] = newValue;
         } else {
-            throw new java.lang.Error("The buffer is full");
+            throw new RuntimeException("The buffer is full");
         }
     }
 
