@@ -5,22 +5,21 @@ public final class Sequences {
 
     public Sequences(String seqTxt){
         String[] lines = seqTxt.split("\n");
-        String[] elements = lines[0].split(" ");
-        String[][] newSeq = new String[lines.length][elements.length];
+        int[] seqLengths = new int[lines.length];
         for(int i = 0; i < lines.length; i++){
-            String[] tmpRow = lines[i].split(" ");
-            if(i == 0) newSeq = new String[lines.length][tmpRow.length];
-            for(int j = 0; j < tmpRow.length; j++){
-                newSeq[i][j] = tmpRow[j];
-            }
+            seqLengths[i] = lines[i].length();
         }
-        this.sequences = newSeq;
+        String[][] newSeq = new String[lines.length][];
+        for(int i = 0; i < lines.length; i++){
+            newSeq[i] = lines[i].split(" ");
+        }
+        sequences = newSeq;
     }
 
     private String[][] copySeq(String[][] original){
         String[][] copy = new String[original.length][original[0].length];
         for(int i = 0; i < original.length; i++){
-            for(int j = 0; i < original[0].length; j++){
+            for(int j = 0; j < original[i].length; j++){
                 copy[i][j] = original[i][j];
             }
         }
@@ -38,11 +37,11 @@ public final class Sequences {
     }
 
     public void printSequences(){
-        for(int i = 0; i < this.sequences.length; i++) {
+        for(int i = 0; i < this.sequences.length; i++){
             System.out.print("Seq" + (i + 1) + ": ");
-            for(int j = 0; j < this.sequences[i].length; j++) {
+            for (int j = 0; j < this.sequences[i].length; j++){
                 System.out.print(this.sequences[i][j]);
-                if(j < this.sequences.length - 1) System.out.print(", ");
+                if(j < this.sequences[i].length - 1) System.out.print(", ");
             }
             System.out.println();
         }

@@ -16,7 +16,7 @@ softwaredesign/GameState.java
  softwaredesign.GameState$rowCol
 softwaredesign/Display.java
  softwaredesign.Display
-softwaredesign/Main.java
- softwaredesign.Main
 softwaredesign/Sequences.java
  softwaredesign.Sequences
+softwaredesign/Main.java
+ softwaredesign.Main
