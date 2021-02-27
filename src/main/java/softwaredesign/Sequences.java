@@ -5,10 +5,6 @@ public final class Sequences {
 
     public Sequences(String seqTxt){
         String[] lines = seqTxt.split("\n");
-        int[] seqLengths = new int[lines.length];
-        for(int i = 0; i < lines.length; i++){
-            seqLengths[i] = lines[i].length();
-        }
         String[][] newSeq = new String[lines.length][];
         for(int i = 0; i < lines.length; i++){
             newSeq[i] = lines[i].split(" ");
