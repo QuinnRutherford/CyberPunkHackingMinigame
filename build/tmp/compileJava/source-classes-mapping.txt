@@ -4,8 +4,8 @@ softwaredesign/GameOver.java
  softwaredesign.GameOver
 softwaredesign/Matrix.java
  softwaredesign.Matrix
-softwaredesign/Main.java
- softwaredesign.Main
+softwaredesign/Buffer.java
+ softwaredesign.Buffer
 softwaredesign/GameManager.java
  softwaredesign.GameManager
 softwaredesign/Sequences.java
@@ -18,5 +18,5 @@ softwaredesign/Display.java
 softwaredesign/TimerClass.java
  softwaredesign.TimerClass
  softwaredesign.TimerClass$1
-softwaredesign/Buffer.java
- softwaredesign.Buffer
+softwaredesign/Main.java
+ softwaredesign.Main
