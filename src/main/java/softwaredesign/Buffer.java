@@ -33,10 +33,10 @@ public final class Buffer {
     }
 
     //this method is for testing only
-    public void printValues() {
+    public void printBuffer() {
         System.out.println("size: " + this.size);
         for (int i=0; i < this.buffer.length; i++) {
-                System.out.println(this.buffer[i]);
+                System.out.print(this.buffer[i] + ", ");
         }
     }
 }

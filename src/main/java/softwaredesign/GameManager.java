@@ -3,31 +3,37 @@ package softwaredesign;
 import java.util.Stack;
 
 public class GameManager {
+    private Puzzle puzzle;
     private Matrix matrix;
+    private Sequences sequences;
     private TimerClass timer;
     private GameOver gameOver;
     private Stack<GameState> moveHistory = new Stack<>();
 
-    public void gameLoop(){
-
+    public GameManager() {
+        this.puzzle = new Puzzle();
+        this.setupPuzzle();
+        this.runGame();
     }
 
-    public void buttonPressed(){
-
+    private void setupPuzzle() {
+        this.puzzle.getNextPuzzle();
+        moveHistory.push(new GameState(this.puzzle.getBufferLen()));
+        this.matrix = new Matrix(this.puzzle.getMatrixTxt());
+        this.sequences = new Sequences(this.puzzle.getSeqTxt());
     }
 
-    private void puzzleSetUp(){
-
+    public void printGame() {
+        System.out.print("Buffer: ");
+        moveHistory.peek().getBuffer().printBuffer();
+        System.out.println("\nMatrix: ");
+        this.matrix.printMatrix();
+        System.out.println(("\nSequences: "));
+        this.sequences.printSequences();
     }
 
-    private int bufferSize(String sizeString){
-        int size;
-        try {
-            size = Integer.parseInt(sizeString);
-        } catch (NumberFormatException e) {
-            throw new java.lang.Error("This is not a valid format for buffer size.");
-        }
-        return size;
+    public void runGame(){
+        printGame();
     }
 
 }

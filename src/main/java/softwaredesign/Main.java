@@ -4,11 +4,7 @@ import java.util.Stack;
 
 public class Main {
     public static void main (String[] args){
-        //GameStateTest();
-        //MatrixTest();
-        SeqTest();
-
-        //GameManager game = new GameManager();
+        GameManager game = new GameManager();
 
         //Thread t1 = new Thread(new TimerClass(20));
         //t1.start();
@@ -22,13 +18,13 @@ public class Main {
 
         Buffer bufferOne = new Buffer(4);
         bufferStack.push(bufferOne);
-        bufferStack.peek().printValues();
+        bufferStack.peek().printBuffer();
         bufferStack.push(new Buffer(bufferStack.peek(), "A"));
-        bufferStack.peek().printValues();
+        bufferStack.peek().printBuffer();
         bufferStack.push(new Buffer(bufferStack.peek(), "B"));
-        bufferStack.peek().printValues();
+        bufferStack.peek().printBuffer();
         bufferStack.push(new Buffer(bufferStack.peek(), "C"));
-        bufferStack.peek().printValues();
+        bufferStack.peek().printBuffer();
     }
 
     public static void GameStateTest() {
@@ -36,13 +32,13 @@ public class Main {
 
         GameState initial = new GameState(3);
         gsStack.push(initial);
-        gsStack.peek().printValues();
+        gsStack.peek().printBuffer();
         gsStack.push(new GameState(gsStack.peek(), "A", 3));
-        gsStack.peek().printValues();
+        gsStack.peek().printBuffer();
         gsStack.push(new GameState(gsStack.peek(), "B", 1));
-        gsStack.peek().printValues();
+        gsStack.peek().printBuffer();
         gsStack.push(new GameState(gsStack.peek(), "C", 3));
-        gsStack.peek().printValues();
+        gsStack.peek().printBuffer();
 
         //Uncomment this line will throw 'The buffer is full' error
         //gsStack.push(new GameState(gsStack.peek(), "error", 3));
