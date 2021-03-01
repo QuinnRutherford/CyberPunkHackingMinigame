@@ -5,6 +5,8 @@ public class Puzzle {
     private int bufferLen;
     private String seqTxt;
     private String matrixTxt;
+    private final int MAX_FILE_NUM = 40;
+    private final int MIN_FILE_NUM = 1;
 
     public Puzzle(){
 
@@ -13,18 +15,7 @@ public class Puzzle {
     //Currently makes the same puzzle every time
     public void getNextPuzzle() {
         //Need to update this to allow for more puzzles
-        this.currPuzzle = "7\n" +
-                "\n" +
-                "1c 55 ff bd e9\n" +
-                "bd 1c e9 ff e9\n" +
-                "55 bd ff 1c 1c\n" +
-                "e9 bd 1c 55 55\n" +
-                "55 e9 bd 55 ff\n" +
-                "\n" +
-                "e9 55\n" +
-                "55 bd e9\n" +
-                "ff 1c bd e9\n" +
-                "55 1c ff 55";
+        this.currPuzzle = getPuzzleContent();
 
         String[] puzzleParts = currPuzzle.split("\n\n");
 
@@ -42,6 +33,19 @@ public class Puzzle {
         this.seqTxt = puzzleParts[2];
     }
 
+    private int getRandomNumber(int min, int max){
+        return (int)(Math.random() * (max - min + 1) + min);
+    }
+
+    private String getPuzzleContent(){
+        int fileNumber = getRandomNumber(MIN_FILE_NUM, MAX_FILE_NUM);
+        FileReader reader = new FileReader();
+        String currentDirectory = System.getProperty("user.dir");
+        String fullFilePath = currentDirectory + "\\puzzles\\" + fileNumber + ".txt";
+        String puzzleTxt = reader.readFile(fullFilePath);
+        return puzzleTxt;
+    }
+
     public int getBufferLen(){
         int copyBufferLen = this.bufferLen;
         return copyBufferLen;
@@ -56,4 +60,5 @@ public class Puzzle {
         String copy = new String(this.seqTxt);
         return copy;
     }
+
 }
