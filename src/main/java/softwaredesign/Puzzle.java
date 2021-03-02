@@ -12,11 +12,8 @@ public class Puzzle {
 
     }
 
-    //Currently makes the same puzzle every time
     public void getNextPuzzle() {
-        //Need to update this to allow for more puzzles
         this.currPuzzle = getPuzzleContent();
-
         String[] puzzleParts = currPuzzle.split("\n\n");
 
         //puzzleParts[0] is buffer length
