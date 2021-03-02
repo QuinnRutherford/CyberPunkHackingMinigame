@@ -2,8 +2,6 @@ softwaredesign/Puzzle.java
  softwaredesign.Puzzle
 softwaredesign/Controller.java
  softwaredesign.Controller
-softwaredesign/GameOver.java
- softwaredesign.GameOver
 softwaredesign/Matrix.java
  softwaredesign.Matrix
 softwaredesign/Main.java
