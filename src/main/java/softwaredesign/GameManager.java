@@ -6,8 +6,6 @@ public class GameManager {
     private Puzzle puzzle;
     private Matrix matrix;
     private Sequences sequences;
-    private TimerClass timer;
-    private GameOver gameOver;
     private Stack<GameState> moveHistory = new Stack<>();
 
     public GameManager() {
