@@ -16,7 +16,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception{
         URL url = new File("src/main/resources/timer.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Timer");
         primaryStage.setScene(new Scene(root, 600, 200));
         primaryStage.show();
     }

@@ -36,7 +36,7 @@ public final class GameState {
     }
 
     public Buffer getBuffer() {
-        //to create a copy we need a copy constructor. Is this necessary?
+        //TODO: copy of the buffer
         return buffer;
     }
 

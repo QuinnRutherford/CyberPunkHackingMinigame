@@ -8,10 +8,6 @@ public class Puzzle {
     private final int MAX_FILE_NUM = 40;
     private final int MIN_FILE_NUM = 1;
 
-    public Puzzle(){
-
-    }
-
     public void getNextPuzzle() {
         this.currPuzzle = getPuzzleContent();
         String[] puzzleParts = currPuzzle.split("\n\n");
