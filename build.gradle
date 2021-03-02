@@ -1,6 +1,16 @@
 plugins {
-    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
 }
+
+// add the following javafx scope
+javafx {
+    version = '11.0.2'
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+// add the following mainClassName property
+mainClassName = "softwaredesign.Main"
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -13,4 +23,6 @@ repositories {
 
 dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
+    // you can add your libraries, here is an example
+    implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
 }
