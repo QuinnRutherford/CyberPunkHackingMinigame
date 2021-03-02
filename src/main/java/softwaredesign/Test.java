@@ -4,7 +4,7 @@ import java.util.Stack;
 
 //This class is to contain functions that test the other classes
 public class Test {
-    public static void BufferTest() {
+    public void bufferTest() {
         Stack<Buffer> bufferStack = new Stack<Buffer>();
 
         Buffer bufferOne = new Buffer(4);
@@ -19,7 +19,7 @@ public class Test {
 
     }
 
-    public static void GameStateTest() {
+    public void gameStateTest() {
         Stack<GameState> gsStack = new Stack<GameState>();
 
         GameState initial = new GameState(3);
@@ -37,7 +37,7 @@ public class Test {
 
     }
 
-    public static void MatrixTest() {
+    public void matrixTest() {
         String matrixTxt = "1c bd e9 55 e9\n1c 1c 1c e9 1c\n55 55 55 e9 1c\n55 55 1c bd 55\n1c 55 1c 55 1c";
 
         Matrix m = new Matrix(matrixTxt);
@@ -48,7 +48,7 @@ public class Test {
 
     }
 
-    public static void SeqTest() {
+    public void seqTest() {
         String seqTxt = "e9 1c 1c\n" +
                 "1c 1c 1c\n" +
                 "1c bd e9";
