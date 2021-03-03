@@ -24,13 +24,13 @@ public class Test {
 
         GameState initial = new GameState(3);
         gsStack.push(initial);
-        gsStack.peek().printBuffer();
+        gsStack.peek().printGameState();
         gsStack.push(new GameState(gsStack.peek(), "A", 3));
-        gsStack.peek().printBuffer();
+        gsStack.peek().printGameState();
         gsStack.push(new GameState(gsStack.peek(), "B", 1));
-        gsStack.peek().printBuffer();
+        gsStack.peek().printGameState();
         gsStack.push(new GameState(gsStack.peek(), "C", 3));
-        gsStack.peek().printBuffer();
+        gsStack.peek().printGameState();
 
         //Uncomment this line will throw 'The buffer is full' error
         //gsStack.push(new GameState(gsStack.peek(), "error", 3));
@@ -56,6 +56,35 @@ public class Test {
 
         System.out.println(seq.getNSeq(1)[0]);
         seq.printSequences();
+    }
+
+    public void gameOverTest() {
+        Stack<GameState> gsStack = new Stack<GameState>();
+        GameOver gameOver = new GameOver();
+        Sequences sequences = new Sequences("A B C D\nD B E\n");
+        sequences.printSequences();
+
+        GameState initial = new GameState(5);
+        gsStack.push(initial);
+        gsStack.peek().printGameState();
+
+        //gsStack.push(new GameState(gsStack.peek(), "A", 3));
+        gsStack.push(new GameState(gsStack.peek(), "D", 3));
+        gsStack.push(new GameState(gsStack.peek(), "Z", 3));
+        gsStack.push(new GameState(gsStack.peek(), "B", 3));
+        gsStack.push(new GameState(gsStack.peek(), "E", 3));
+
+        gsStack.peek().printGameState();
+        System.out.println(gameOver.getGameOver(sequences, gsStack.peek().getBuffer()));
+
+    }
+
+    public void ArrayTest() {
+        Sequences sequences = new Sequences("A B C D\nD B E\nA B\n");
+        for (int i = 0; i < sequences.getNumberOfSeq(); i++) {
+            String [] temp = sequences.getNSeq(i);
+            System.out.println(temp.length);
+        }
     }
 
 }

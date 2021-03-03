@@ -6,11 +6,13 @@ public class GameManager {
     private Puzzle puzzle;
     private Matrix matrix;
     private Sequences sequences;
+    private GameOver gameOver;
     private Stack<GameState> moveHistory = new Stack<>();
 
     public GameManager() {
         this.puzzle = new Puzzle();
         this.setupPuzzle();
+        this.gameOver = new GameOver();
         this.runGame();
     }
 
@@ -31,6 +33,10 @@ public class GameManager {
     }
 
     public void runGame(){
+
+        //while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
+
+        //}
         printGame();
     }
 

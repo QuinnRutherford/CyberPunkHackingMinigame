@@ -40,7 +40,7 @@ public final class GameState {
         return buffer;
     }
 
-    public void printBuffer() {
+    public void printGameState() {
         System.out.println("----------------");
         System.out.println(this.axis);
         System.out.println("num Row/Col: " + this.numRowCol);

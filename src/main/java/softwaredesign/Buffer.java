@@ -27,16 +27,30 @@ public final class Buffer {
         }
     }
 
-    private int getSize() {
+    public int getSize() {
         int copySize = this.size;
         return copySize;
     }
 
-    //this method is for testing only
+    public String[] getBuffer() {
+        String [] bufferCopy = new String[this.buffer.length];
+        System.arraycopy(this.buffer, 0, bufferCopy, 0, this.buffer.length);
+        return bufferCopy;
+    }
+
     public void printBuffer() {
-        System.out.println("size: " + this.size);
         for (int i=0; i < this.buffer.length; i++) {
-                System.out.print(this.buffer[i] + ", ");
+            if (this.buffer[i] == null) {
+                System.out.print("_");
+            } else {
+                System.out.print(this.buffer[i]);
+            }
+
+            if (i != this.buffer.length - 1) {
+                System.out.print(" ");
+            } else {
+                System.out.println();
+            }
         }
     }
 }

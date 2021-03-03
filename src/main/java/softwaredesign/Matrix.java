@@ -31,13 +31,23 @@ public final class Matrix {
         String[][] copy = copyMatrix(this.matrix);
         return copy;
     }
+
     public String getMatrixElement(int x, int y) {
         return copyMatrix(this.matrix)[x][y];
     }
 
     public void printMatrix() {
+        System.out.print("  ");
+        for (int i = 0; i < this.matrix.length; i++) {
+            System.out.print((i + 1) + "   ");
+        }
+        System.out.println();
+
         for(int i = 0; i < this.matrix.length; i++) {
+            System.out.print((i + 1) + " ");
+
             for(int j = 0; j < this.matrix[i].length; j++) {
+
                 System.out.print(this.matrix[i][j]);
                 if(j < this.matrix.length - 1) System.out.print("  ");
             }
