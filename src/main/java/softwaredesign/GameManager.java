@@ -25,23 +25,48 @@ public class GameManager {
     }
 
     public void printGame() {
-        moveHistory.peek().printGameState();
-        System.out.println("\nMatrix: ");
-        this.matrix.printMatrix();
         System.out.println(("\nSequences: "));
         this.sequences.printSequences();
+        System.out.println("\nMatrix: ");
+        this.matrix.printMatrix();
+        moveHistory.peek().printGameState();
     }
 
     public void runGame(){
         Scanner scanner = new Scanner(System.in);
-        while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
+        int vibecheck = scanner.nextInt();
+        System.out.println(vibecheck);
+        //while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
+            //printGame();
 
-        }
-        printGame();
-    }
+            /*
+            int row = 0;
+            //while (row <= 0 && row > matrix.getMatrix().length ) {
+                try {
+                    System.out.println("Choose a row:");
+                    row = scanner.nextInt();
+                    //row = Integer.parseInt(rowStr);
+                } catch () {
+                    System.out.println("Invalid format");
+                }
+            //}
 
-    private void getMove(Scanner scanner){
-        System.out.println("Choose row (start at 1)");
+            int col = 0;
+            while (col <= 0 && col > matrix.getMatrix()[row].length) {
+                try {
+                    System.out.println("Choose a column:");
+                    String colStr = scanner.nextLine();
+                    col = Integer.parseInt(colStr);
+                } catch (NumberFormatException E) {
+                    System.out.println("Invalid format");
+                }
+            }
+
+            System.out.println("Choice is: " + matrix.getMatrixElement(row, col));
+
+             */
+        //}
+
     }
 
 }
