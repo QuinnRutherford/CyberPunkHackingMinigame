@@ -12,8 +12,6 @@ import java.net.URL;
 public class Main extends Application {
 
     public static void main (String[] args){
-        //GameManager game = new GameManager();
-        //game.runGameLoop();
         Thread gameThread = new Thread(new GameManager());
         Thread timerThread = new Thread(new TimerClass(30));
         gameThread.start();
