@@ -1,6 +1,7 @@
 package softwaredesign;
 
 import java.util.Stack;
+import java.util.Scanner;
 
 public class GameManager {
     private Puzzle puzzle;
@@ -24,8 +25,7 @@ public class GameManager {
     }
 
     public void printGame() {
-        System.out.print("Buffer: ");
-        moveHistory.peek().getBuffer().printBuffer();
+        moveHistory.peek().printGameState();
         System.out.println("\nMatrix: ");
         this.matrix.printMatrix();
         System.out.println(("\nSequences: "));
@@ -33,11 +33,16 @@ public class GameManager {
     }
 
     public void runGame(){
+        Scanner scanner = new Scanner(System.in);
+        while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
 
-        //while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
-
-        //}
+        }
         printGame();
     }
 
+    private void getMove(Scanner scanner){
+        System.out.println("Choose row (start at 1)");
+    }
+
 }
+

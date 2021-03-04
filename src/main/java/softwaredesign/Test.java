@@ -61,7 +61,7 @@ public class Test {
     public void gameOverTest() {
         Stack<GameState> gsStack = new Stack<GameState>();
         GameOver gameOver = new GameOver();
-        Sequences sequences = new Sequences("A B C D\nD B E\n");
+        Sequences sequences = new Sequences("A B\nD B E\n");
         sequences.printSequences();
 
         GameState initial = new GameState(5);
@@ -70,7 +70,7 @@ public class Test {
 
         //gsStack.push(new GameState(gsStack.peek(), "A", 3));
         gsStack.push(new GameState(gsStack.peek(), "D", 3));
-        gsStack.push(new GameState(gsStack.peek(), "Z", 3));
+        //gsStack.push(new GameState(gsStack.peek(), "Z", 3));
         gsStack.push(new GameState(gsStack.peek(), "B", 3));
         gsStack.push(new GameState(gsStack.peek(), "E", 3));
 
@@ -80,7 +80,7 @@ public class Test {
     }
 
     public void ArrayTest() {
-        Sequences sequences = new Sequences("A B C D\nD B E\nA B\n");
+        Sequences sequences = new Sequences("A B\nD B E\nA B\n");
         for (int i = 0; i < sequences.getNumberOfSeq(); i++) {
             String [] temp = sequences.getNSeq(i);
             System.out.println(temp.length);

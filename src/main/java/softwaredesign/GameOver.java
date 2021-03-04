@@ -23,18 +23,13 @@ public class GameOver {
     }
 
     private boolean checkCorrectSequence (String[] seq, Buffer buf) {
-        //if (buf.getSize() < seq.length) return false;
-        //buffer size is >= seq length
         String bufString = "";
         for (int i = 0; i < buf.getSize(); i++) {
             bufString += buf.getBuffer()[i];
         }
-
         String seqString = "";
         for (int i = 0; i < seq.length; i++) {
-            if (seq[i] != null) {
-                seqString += seq[i];
-            }
+            seqString += seq[i];
         }
 
         return bufString.contains(seqString);

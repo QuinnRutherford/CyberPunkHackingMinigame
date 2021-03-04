@@ -5,15 +5,28 @@ public final class Sequences {
 
     public Sequences(String seqTxt){
         String[] lines = seqTxt.split("\n");
-        String[][] newSeq = new String[lines.length][];
+        int longestSeq = 0;
         for(int i = 0; i < lines.length; i++){
-            newSeq[i] = lines[i].split(" ");
+            int tmpLength = lines[i].split(" ").length;
+            if(tmpLength > longestSeq){
+                longestSeq = tmpLength;
+            }
         }
-        sequences = newSeq;
+        this.sequences = new String[lines.length][longestSeq];
+        for(int i = 0; i < lines.length; i++){
+            this.sequences[i] = lines[i].split(" ");
+        }
     }
 
     private String[][] copySeq(String[][] original){
-        String[][] copy = new String[original.length][original[0].length];
+        int longestSeq = 0;
+        for(int i = 0; i < original.length; i++){
+            int tmpLength = original[i].length;
+            if(tmpLength > longestSeq){
+                longestSeq = tmpLength;
+            }
+        }
+        String[][] copy = new String[original.length][longestSeq];
         for(int i = 0; i < original.length; i++){
             for(int j = 0; j < original[i].length; j++){
                 copy[i][j] = original[i][j];

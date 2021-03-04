@@ -41,7 +41,7 @@ public final class GameState {
     }
 
     public void printGameState() {
-        System.out.println("----------------");
+        System.out.println("----GameState---");
         System.out.println(this.axis);
         System.out.println("num Row/Col: " + this.numRowCol);
         buffer.printBuffer();

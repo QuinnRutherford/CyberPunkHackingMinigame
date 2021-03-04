@@ -22,10 +22,11 @@ public class Main extends Application{
     }
 
     public static void main (String[] args){
-        //GameManager game = new GameManager();
+        GameManager game = new GameManager();
         //Application.launch(args);
         Test test = new Test();
-        test.gameOverTest();
+        //test.gameOverTest();
+        //test.ArrayTest();
         //Thread t1 = new Thread(new TimerClass(20));
         //t1.start();
     }
