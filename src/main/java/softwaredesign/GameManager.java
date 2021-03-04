@@ -1,9 +1,8 @@
 package softwaredesign;
 
-
 import java.util.Scanner;
 
-public class GameManager {
+public class GameManager extends Thread {
     private Puzzle puzzle;
     private Matrix matrix;
     private Sequences sequences;
@@ -33,7 +32,13 @@ public class GameManager {
         moves.printCurrGameState();
     }
 
-    public void runGame() {
+    @Override
+    public void run() {
+        runGameLoop();
+    }
+
+    public void runGameLoop() {
+
         Scanner scanner = new Scanner(System.in);
         //Core game-loop
         while (!gameOver.getGameOver(this.sequences, moves.getCurrGameState())){
@@ -78,6 +83,7 @@ public class GameManager {
 
         moves.printCurrGameState();
     }
+
 
 }
 

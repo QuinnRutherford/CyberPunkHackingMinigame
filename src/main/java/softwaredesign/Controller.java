@@ -14,13 +14,11 @@ public class Controller {
     @FXML
     private Label secondsTimer;
 
-
-    int secs = 65;//Main.tPerLevel;
-
+    int secs = 50;//Main.tPerLevel;
 
     public void initialize() {
-        Timeline time = new Timeline();
-        time.setCycleCount(Timeline.INDEFINITE);
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
 
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
             secs--;
@@ -30,13 +28,13 @@ public class Controller {
             secondsTimer.setText(seconds);
 
             if (secs <= 0) {
-                time.stop();
+                timeline.stop();
                 //game over gui;
             }
         });
 
-        time.getKeyFrames().add(frame);
-        time.playFromStart();
+        timeline.getKeyFrames().add(frame);
+        timeline.playFromStart();
 
     }
 
