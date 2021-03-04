@@ -75,7 +75,6 @@ public class Test {
         gsStack.push(new GameState(gsStack.peek(), "E", 3));
 
         gsStack.peek().printGameState();
-        System.out.println(gameOver.getGameOver(sequences, gsStack.peek()));
 
     }
 
@@ -86,5 +85,4 @@ public class Test {
             System.out.println(temp.length);
         }
     }
-
 }

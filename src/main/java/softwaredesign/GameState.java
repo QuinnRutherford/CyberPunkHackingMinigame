@@ -46,7 +46,7 @@ public final class GameState {
     }
 
     public String[] getBufferValues() {
-        return this.buffer.getBufferValues();
+        return this.buffer.getValues();
     }
 
     private Buffer getBuffer() {
@@ -60,8 +60,6 @@ public final class GameState {
 
     public void printGameState() {
         System.out.println("----Buffer---");
-        //System.out.println(this.axis);
-        //System.out.println("Num Row/Col: " + this.numRowCol);
         buffer.printBuffer();
         System.out.println("----------------");
     }

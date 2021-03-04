@@ -16,16 +16,23 @@ public class MoveHistory {
         this.moveHistory.push(newGS);
     }
 
+    public String[] getCurrBufferValues() {
+        return this.moveHistory.peek().getBufferValues();
+    }
+
+    public int getCurrBufferSize() {
+        return this.moveHistory.peek().getBufferSize();
+    }
+
     public void printCurrGameState() {
         moveHistory.peek().printGameState();
     }
 
-    //TODO:TRY TO ABSTRACT THIS METHOD
-    public GameState getCurrGameState() {
-        return new GameState(moveHistory.peek());
+    public GameState.rowCol getCurrAxis() {
+        return this.moveHistory.peek().getAxis();
     }
 
     public int getCurrNumRowCol() {
-        return this.getCurrGameState().getNumRowCol();
+        return this.moveHistory.peek().getNumRowCol();
     }
 }

@@ -18,7 +18,6 @@ public class GameManager implements Runnable {
 
     private void setupPuzzle() {
         this.puzzle.getNextPuzzle();
-        //moveHistory.push(new GameState(this.puzzle.getBufferLen()));
         this.matrix = new Matrix(this.puzzle.getMatrixTxt());
         this.sequences = new Sequences(this.puzzle.getSeqTxt());
     }
@@ -40,12 +39,12 @@ public class GameManager implements Runnable {
 
         Scanner scanner = new Scanner(System.in);
         //Core game-loop
-        while (!gameOver.getGameOver(this.sequences, moves.getCurrGameState())){
+        while (!gameOver.getGameOver(this.sequences, this.moves)){
             printGame();
             //get user input
             String userChoice;
             int nextRowCol;
-            if (moves.getCurrGameState().getAxis() == GameState.rowCol.ROW) {
+            if (moves.getCurrAxis() == GameState.rowCol.ROW) {
                 int currRow = moves.getCurrNumRowCol();
                 System.out.println("The current row is: " + (currRow + 1));
                 int col = 0;

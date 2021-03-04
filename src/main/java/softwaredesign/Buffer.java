@@ -1,5 +1,4 @@
 package softwaredesign;
-import java.util.ArrayList;
 
 public final class Buffer {
     private String[] buffer;
@@ -13,13 +12,13 @@ public final class Buffer {
 
     //copy constructor
     public Buffer(Buffer bufferToCopy) {
-        this.buffer = bufferToCopy.getBufferValues();
+        this.buffer = bufferToCopy.getValues();
         this.size = bufferToCopy.getSize();
     }
 
     //for creating a new buffer with old values + newest value
     public Buffer(Buffer prevBuffer, String newValue) {
-        this.buffer = new String[prevBuffer.getBufferValues().length];
+        this.buffer = new String[prevBuffer.getValues().length];
         this.size = prevBuffer.getSize() + 1;
 
         if (this.buffer.length >= this.size) {
@@ -38,7 +37,7 @@ public final class Buffer {
         return copySize;
     }
 
-    public String[] getBufferValues() {
+    public String[] getValues() {
         String [] bufferCopy = new String[this.buffer.length];
         System.arraycopy(this.buffer, 0, bufferCopy, 0, this.buffer.length);
         return bufferCopy;
