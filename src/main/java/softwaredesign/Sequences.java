@@ -3,7 +3,7 @@ package softwaredesign;
 public final class Sequences {
     private final String[][] sequences;
 
-    public Sequences(String seqTxt){
+    public Sequences(String seqTxt) {
         String[] lines = seqTxt.split("\n");
         int longestSeq = 0;
         for(int i = 0; i < lines.length; i++){
@@ -18,7 +18,7 @@ public final class Sequences {
         }
     }
 
-    private String[][] copySeq(String[][] original){
+    private String[][] copySeq(String[][] original) {
         int longestSeq = 0;
         for(int i = 0; i < original.length; i++){
             int tmpLength = original[i].length;
@@ -37,7 +37,7 @@ public final class Sequences {
 
     public String[] getNSeq(int seqIndex) {
         String[][] seqCopy = copySeq(this.sequences);
-        if(seqIndex >= seqCopy.length) throw new RuntimeException("The is no sequence for this index");
+        if(seqIndex >= seqCopy.length) throw new RuntimeException("No sequence for this index");
         return seqCopy[seqIndex];
     }
 
@@ -45,7 +45,7 @@ public final class Sequences {
         return sequences.length;
     }
 
-    public void printSequences(){
+    public void printSequences() {
         for(int i = 0; i < this.sequences.length; i++){
             System.out.print((i + 1) + ": ");
             for (int j = 0; j < this.sequences[i].length; j++){

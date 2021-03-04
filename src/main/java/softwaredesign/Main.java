@@ -26,8 +26,7 @@ public class Main extends Application{
         GameManager game = new GameManager();
         Application.launch(args);
         //Test test = new Test();
-        //test.gameOverTest();
-        //test.ArrayTest();
+
         //Thread t1 = new Thread(new TimerClass(20));
         //t1.start();
         System.exit(0);

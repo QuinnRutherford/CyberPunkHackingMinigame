@@ -1,5 +1,5 @@
-softwaredesign/Display.java
- softwaredesign.Display
+softwaredesign/Puzzle.java
+ softwaredesign.Puzzle
 softwaredesign/GameOver.java
  softwaredesign.GameOver
 softwaredesign/Sequences.java
@@ -12,17 +12,17 @@ softwaredesign/Matrix.java
  softwaredesign.Matrix
 softwaredesign/Buffer.java
  softwaredesign.Buffer
-softwaredesign/TimerClass.java
- softwaredesign.TimerClass
- softwaredesign.TimerClass$1
+softwaredesign/GameManager.java
+ softwaredesign.GameManager
+softwaredesign/FileReader.java
+ softwaredesign.FileReader
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
-softwaredesign/Puzzle.java
- softwaredesign.Puzzle
-softwaredesign/FileReader.java
- softwaredesign.FileReader
+softwaredesign/Display.java
+ softwaredesign.Display
+softwaredesign/TimerClass.java
+ softwaredesign.TimerClass
+ softwaredesign.TimerClass$1
 softwaredesign/Main.java
  softwaredesign.Main
-softwaredesign/GameManager.java
- softwaredesign.GameManager

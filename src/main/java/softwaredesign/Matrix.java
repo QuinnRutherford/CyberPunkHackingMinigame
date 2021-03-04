@@ -17,23 +17,13 @@ public final class Matrix {
         this.matrix = newMatrix;
     }
 
-    private String[][] copyMatrix(String[][] original){
-        String[][] copy = new String[original.length][original[0].length];
-        for(int i = 0; i < original.length; i++){
-            for(int j = 0; j < original[0].length; j++){
-                copy[i][j] = original[i][j];
-            }
-        }
-        return copy;
-    }
-
-    public String[][] getMatrix() {
-        String[][] copy = copyMatrix(this.matrix);
-        return copy;
-    }
-
     public String getMatrixElement(int x, int y) {
-        return copyMatrix(this.matrix)[x][y];
+        String elementCopy = this.matrix[x][y];
+        return elementCopy;
+    }
+
+    public int getMatrixDims() {
+        return this.matrix.length;
     }
 
     public void printMatrix() {

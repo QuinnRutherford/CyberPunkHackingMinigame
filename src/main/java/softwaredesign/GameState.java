@@ -26,7 +26,6 @@ public final class GameState {
         }
 
         this.buffer = new Buffer(prevGS.getBuffer(), valueAddToBuffer);
-
         this.numRowCol = newNumRowCol;
     }
 
@@ -35,9 +34,16 @@ public final class GameState {
         return copyAxis;
     }
 
-    public Buffer getBuffer() {
-        //TODO: copy of the buffer
-        return buffer;
+    public String[] getBufferValues() {
+        return this.buffer.getBufferValues();
+    }
+
+    private Buffer getBuffer() {
+        return this.buffer;
+    }
+
+    public int getBufferSize() {
+        return this.buffer.getSize();
     }
 
     public void printGameState() {
@@ -47,4 +53,5 @@ public final class GameState {
         buffer.printBuffer();
         System.out.println("----------------");
     }
+
 }

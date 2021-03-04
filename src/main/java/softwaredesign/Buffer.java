@@ -13,7 +13,7 @@ public final class Buffer {
 
     //for creating a new buffer with old values + newest value
     public Buffer(Buffer prevBuffer, String newValue) {
-        this.buffer = new String[prevBuffer.buffer.length];
+        this.buffer = new String[prevBuffer.getBufferValues().length];
         this.size = prevBuffer.getSize() + 1;
 
         if (this.buffer.length >= this.size) {
@@ -32,7 +32,7 @@ public final class Buffer {
         return copySize;
     }
 
-    public String[] getBuffer() {
+    public String[] getBufferValues() {
         String [] bufferCopy = new String[this.buffer.length];
         System.arraycopy(this.buffer, 0, bufferCopy, 0, this.buffer.length);
         return bufferCopy;

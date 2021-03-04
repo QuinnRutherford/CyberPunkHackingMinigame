@@ -34,10 +34,10 @@ public class GameManager {
 
     public void runGame() {
         Scanner scanner = new Scanner(System.in);
-        while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
+        while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek())) {
             printGame();
             int row = 0;
-            while (row <= 0 || row > matrix.getMatrix().length) {
+            while (row <= 0 || row > matrix.getMatrixDims()) {
                 try {
                     System.out.println("Choose a row:");
                     String rowStr = scanner.nextLine();
@@ -48,7 +48,7 @@ public class GameManager {
             }
 
             int col = 0;
-            while (col <= 0 || col > matrix.getMatrix()[row - 1].length) {
+            while (col <= 0 || col > matrix.getMatrixDims()) {
                 try {
                     System.out.println("Choose a column:");
                     String colStr = scanner.nextLine();

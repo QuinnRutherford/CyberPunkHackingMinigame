@@ -7,25 +7,25 @@ public class GameOver {
         this.gameOver = false;
     }
 
-    public boolean getGameOver(Sequences sequences, Buffer buf) {
-        this.gameOver = updateGameOver(sequences, buf);
+    public boolean getGameOver(Sequences sequences, GameState gs) {
+        this.gameOver = updateGameOver(sequences, gs);
         boolean gameOverCopy = this.gameOver;
         return gameOverCopy;
     }
 
-    private boolean updateGameOver(Sequences sequences, Buffer buf) {
+    private boolean updateGameOver(Sequences sequences, GameState gs) {
         for (int i = 0; i < sequences.getNumberOfSeq(); i++) {
-            if (checkCorrectSequence(sequences.getNSeq(i), buf)) {
+            if (checkCorrectSequence(sequences.getNSeq(i), gs)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean checkCorrectSequence (String[] seq, Buffer buf) {
+    private boolean checkCorrectSequence (String[] seq, GameState gs) {
         String bufString = "";
-        for (int i = 0; i < buf.getSize(); i++) {
-            bufString += buf.getBuffer()[i];
+        for (int i = 0; i < gs.getBufferSize(); i++) {
+            bufString += gs.getBufferValues()[i];
         }
         String seqString = "";
         for (int i = 0; i < seq.length; i++) {
