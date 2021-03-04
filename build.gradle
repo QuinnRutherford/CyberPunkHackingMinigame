@@ -26,3 +26,6 @@ dependencies {
     // you can add your libraries, here is an example
     implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
 }
+run {
+    standardInput = System.in
+}

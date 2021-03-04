@@ -13,6 +13,7 @@ public class FileReader {
             while (scanner.hasNextLine()) {
                 fileContent += scanner.nextLine() + "\n";
             }
+            scanner.close();
         } catch (FileNotFoundException e){
             System.out.println(e.getMessage());
             System.exit(1);

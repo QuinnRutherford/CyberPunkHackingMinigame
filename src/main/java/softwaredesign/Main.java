@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Main extends Application{
@@ -23,11 +24,12 @@ public class Main extends Application{
 
     public static void main (String[] args){
         GameManager game = new GameManager();
-        //Application.launch(args);
+        Application.launch(args);
         //Test test = new Test();
         //test.gameOverTest();
         //test.ArrayTest();
         //Thread t1 = new Thread(new TimerClass(20));
         //t1.start();
+        System.exit(0);
     }
 }

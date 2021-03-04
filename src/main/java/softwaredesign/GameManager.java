@@ -33,41 +33,24 @@ public class GameManager {
     }
 
     public void runGame(){
+        printGame();
+        /*String str = "ss\n";
+        String s = null;
         Scanner scanner = new Scanner(System.in);
-        int vibecheck = scanner.nextInt();
-        System.out.println(vibecheck);
-        //while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
+        while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
             //printGame();
-
-            /*
-            int row = 0;
-            //while (row <= 0 && row > matrix.getMatrix().length ) {
-                try {
-                    System.out.println("Choose a row:");
-                    row = scanner.nextInt();
-                    //row = Integer.parseInt(rowStr);
-                } catch () {
-                    System.out.println("Invalid format");
-                }
-            //}
-
-            int col = 0;
-            while (col <= 0 && col > matrix.getMatrix()[row].length) {
-                try {
-                    System.out.println("Choose a column:");
-                    String colStr = scanner.nextLine();
-                    col = Integer.parseInt(colStr);
-                } catch (NumberFormatException E) {
-                    System.out.println("Invalid format");
-                }
+            System.out.print("Write something: ");
+            while(scanner.hasNextLine()){
+                s = scanner.nextLine();
+            }
+            try {
+                Thread.sleep(5000);
+            } catch(InterruptedException e){
+                System.out.println(e.getMessage());
             }
 
-            System.out.println("Choice is: " + matrix.getMatrixElement(row, col));
-
-             */
-        //}
-
+            System.out.println("You wrote: " + s);
+        }*/
     }
-
 }
 
