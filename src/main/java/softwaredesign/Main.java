@@ -14,7 +14,7 @@ import java.util.Stack;
 public class Main extends Application{
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         URL url = new File("src/main/resources/timer.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         primaryStage.setTitle("Timer");
@@ -24,7 +24,8 @@ public class Main extends Application{
 
     public static void main (String[] args){
         GameManager game = new GameManager();
-        Application.launch(args);
+        game.runGame();
+        //Application.launch(args);
         //Test test = new Test();
 
         //Thread t1 = new Thread(new TimerClass(20));

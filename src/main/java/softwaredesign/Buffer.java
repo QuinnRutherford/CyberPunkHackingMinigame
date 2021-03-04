@@ -11,6 +11,12 @@ public final class Buffer {
         this.size = 0;
     }
 
+    //copy constructor
+    public Buffer(Buffer bufferToCopy) {
+        this.buffer = bufferToCopy.getBufferValues();
+        this.size = bufferToCopy.getSize();
+    }
+
     //for creating a new buffer with old values + newest value
     public Buffer(Buffer prevBuffer, String newValue) {
         this.buffer = new String[prevBuffer.getBufferValues().length];

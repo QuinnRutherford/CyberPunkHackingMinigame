@@ -1,6 +1,6 @@
 package softwaredesign;
 
-import java.util.Stack;
+
 import java.util.Scanner;
 
 public class GameManager {
@@ -8,19 +8,19 @@ public class GameManager {
     private Matrix matrix;
     private Sequences sequences;
     private GameOver gameOver;
-    private Stack<GameState> moveHistory = new Stack<>();
+    private MoveHistory moves;
     private TimerClass timer = new TimerClass(5);
 
     public GameManager() {
         this.puzzle = new Puzzle();
         this.setupPuzzle();
+        moves = new MoveHistory(this.puzzle.getBufferLen());
         this.gameOver = new GameOver();
-        this.runGame();
     }
 
     private void setupPuzzle() {
         this.puzzle.getNextPuzzle();
-        moveHistory.push(new GameState(this.puzzle.getBufferLen()));
+        //moveHistory.push(new GameState(this.puzzle.getBufferLen()));
         this.matrix = new Matrix(this.puzzle.getMatrixTxt());
         this.sequences = new Sequences(this.puzzle.getSeqTxt());
     }
@@ -30,35 +30,55 @@ public class GameManager {
         this.sequences.printSequences();
         System.out.println("\nMatrix: ");
         this.matrix.printMatrix();
-        moveHistory.peek().printGameState();
+        moves.printCurrGameState();
     }
 
     public void runGame() {
         Scanner scanner = new Scanner(System.in);
-        while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek())) {
+        //Core game-loop
+        while (!gameOver.getGameOver(this.sequences, moves.getCurrGameState())){
             printGame();
-            int row = 0;
-            while (row <= 0 || row > matrix.getMatrixDims()) {
-                try {
-                    System.out.println("Choose a row:");
-                    String rowStr = scanner.nextLine();
-                    row = Integer.parseInt(rowStr);
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid format");
+
+            //get user input
+            String userChoice;
+            int nextRowCol;
+            if (moves.getCurrGameState().getAxis() == GameState.rowCol.ROW) {
+                int currRow = moves.getCurrNumRowCol();
+                System.out.println("The current row is: " + (currRow + 1));
+                int col = 0;
+                while (col <= 0 || col > matrix.getMatrixDims()) {
+                    try {
+                        System.out.println("Choose a column:");
+                        String colStr = scanner.nextLine();
+                        col = Integer.parseInt(colStr);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid format");
+                    }
                 }
+                userChoice = this.matrix.getMatrixElement(currRow, col - 1);
+                nextRowCol = col - 1;
+            } else {
+                int currCol = moves.getCurrNumRowCol();
+                System.out.println("The current column is: " + (currCol + 1));
+                int row = 0;
+                while (row <= 0 || row > matrix.getMatrixDims()) {
+                    try {
+                        System.out.println("Choose a row:");
+                        String rowStr = scanner.nextLine();
+                        row = Integer.parseInt(rowStr);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid format");
+                    }
+                }
+                userChoice = this.matrix.getMatrixElement(row - 1, currCol);
+                nextRowCol = row - 1;
             }
 
-            int col = 0;
-            while (col <= 0 || col > matrix.getMatrixDims()) {
-                try {
-                    System.out.println("Choose a column:");
-                    String colStr = scanner.nextLine();
-                    col = Integer.parseInt(colStr);
-                } catch (NumberFormatException e) {
-                    System.out.println("Invalid format");
-                }
-            }
+            moves.newMove(userChoice, nextRowCol);
         }
+
+        moves.printCurrGameState();
     }
+
 }
 
