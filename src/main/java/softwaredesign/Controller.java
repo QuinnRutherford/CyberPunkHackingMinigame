@@ -14,7 +14,7 @@ public class Controller {
     @FXML
     private Label secondsTimer;
 
-    int secs = 50;//Main.tPerLevel;
+    int secs = 30;//Main.tPerLevel;
 
     public void initialize() {
         Timeline timeline = new Timeline();
@@ -30,6 +30,7 @@ public class Controller {
             if (secs <= 0) {
                 timeline.stop();
                 //game over gui;
+
             }
         });
 

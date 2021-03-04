@@ -8,21 +8,21 @@ softwaredesign/Buffer.java
  softwaredesign.Buffer
 softwaredesign/Matrix.java
  softwaredesign.Matrix
-softwaredesign/Controller.java
- softwaredesign.Controller
-softwaredesign/GameOver.java
- softwaredesign.GameOver
 softwaredesign/MoveHistory.java
  softwaredesign.MoveHistory
-softwaredesign/Test.java
- softwaredesign.Test
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
+softwaredesign/GameOver.java
+ softwaredesign.GameOver
+softwaredesign/Test.java
+ softwaredesign.Test
 softwaredesign/TimerClass.java
  softwaredesign.TimerClass
  softwaredesign.TimerClass$1
-softwaredesign/GameManager.java
- softwaredesign.GameManager
 softwaredesign/Main.java
  softwaredesign.Main
+softwaredesign/GameManager.java
+ softwaredesign.GameManager
+softwaredesign/Controller.java
+ softwaredesign.Controller

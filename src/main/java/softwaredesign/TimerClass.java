@@ -2,7 +2,6 @@ package softwaredesign;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.Callable;
 
 public class TimerClass implements Runnable {
 
@@ -16,20 +15,16 @@ public class TimerClass implements Runnable {
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
 
-
             int tRemaining = time;
 
             @Override
             public void run() {
 
                 if (tRemaining > 0) {
-                    System.out.println("Time remaining: " + tRemaining);
                     tRemaining--;
                 } else {
                     System.out.println("\nTime is up!");
-
-                    //
-
+                    System.exit(0);
                     timer.cancel();
                     timer.purge();
                 }

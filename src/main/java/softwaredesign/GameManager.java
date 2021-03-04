@@ -1,8 +1,10 @@
 package softwaredesign;
 
+import javafx.application.Application;
+
 import java.util.Scanner;
 
-public class GameManager extends Thread {
+public class GameManager implements Runnable {
     private Puzzle puzzle;
     private Matrix matrix;
     private Sequences sequences;
@@ -82,6 +84,7 @@ public class GameManager extends Thread {
         }
 
         moves.printCurrGameState();
+        System.exit(0);
     }
 
 
