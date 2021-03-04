@@ -1,29 +1,29 @@
 softwaredesign/Puzzle.java
  softwaredesign.Puzzle
-softwaredesign/TimerClass.java
- softwaredesign.TimerClass
- softwaredesign.TimerClass$1
+softwaredesign/Buffer.java
+ softwaredesign.Buffer
 softwaredesign/Sequences.java
  softwaredesign.Sequences
-softwaredesign/Display.java
- softwaredesign.Display
-softwaredesign/Controller.java
- softwaredesign.Controller
+softwaredesign/MoveHistory.java
+ softwaredesign.MoveHistory
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
-softwaredesign/FileReader.java
- softwaredesign.FileReader
-softwaredesign/Buffer.java
- softwaredesign.Buffer
-softwaredesign/MoveHistory.java
- softwaredesign.MoveHistory
-softwaredesign/GameOver.java
- softwaredesign.GameOver
+softwaredesign/Controller.java
+ softwaredesign.Controller
 softwaredesign/Matrix.java
  softwaredesign.Matrix
+softwaredesign/TimerClass.java
+ softwaredesign.TimerClass
+ softwaredesign.TimerClass$1
+softwaredesign/Display.java
+ softwaredesign.Display
+softwaredesign/FileReader.java
+ softwaredesign.FileReader
 softwaredesign/Main.java
  softwaredesign.Main
+softwaredesign/GameOver.java
+ softwaredesign.GameOver
 softwaredesign/GameManager.java
  softwaredesign.GameManager
 softwaredesign/Test.java

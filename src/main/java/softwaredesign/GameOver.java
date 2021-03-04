@@ -35,9 +35,14 @@ public class GameOver {
             bufString += gs.getBufferValues()[i];
         }
         String seqString = "";
+        //TODO: Solve this not here
         for (int i = 0; i < seq.length; i++) {
-            seqString += seq[i];
+            if(seq[i] != null){
+                seqString += seq[i];
+            }
         }
+        System.out.println("Current Buffer: " + bufString);
+        System.out.println("Current Seq: " + seqString);
 
         return bufString.contains(seqString);
     }

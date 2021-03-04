@@ -38,7 +38,6 @@ public class GameManager {
         //Core game-loop
         while (!gameOver.getGameOver(this.sequences, moves.getCurrGameState())){
             printGame();
-
             //get user input
             String userChoice;
             int nextRowCol;
