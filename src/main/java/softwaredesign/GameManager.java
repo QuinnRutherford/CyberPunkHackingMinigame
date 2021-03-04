@@ -1,7 +1,5 @@
 package softwaredesign;
 
-import javafx.application.Application;
-
 import java.util.Scanner;
 
 public class GameManager implements Runnable {

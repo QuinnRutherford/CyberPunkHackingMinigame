@@ -20,9 +20,9 @@ softwaredesign/Test.java
 softwaredesign/TimerClass.java
  softwaredesign.TimerClass
  softwaredesign.TimerClass$1
+softwaredesign/Controller.java
+ softwaredesign.Controller
 softwaredesign/Main.java
  softwaredesign.Main
 softwaredesign/GameManager.java
  softwaredesign.GameManager
-softwaredesign/Controller.java
- softwaredesign.Controller

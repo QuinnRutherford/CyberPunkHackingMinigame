@@ -14,7 +14,7 @@ public class Controller {
     @FXML
     private Label secondsTimer;
 
-    int secs = 30;//Main.tPerLevel;
+    int secs = Main.timePerPuzzle;
 
     public void initialize() {
         Timeline timeline = new Timeline();

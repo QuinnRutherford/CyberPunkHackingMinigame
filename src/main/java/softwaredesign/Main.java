@@ -10,15 +10,15 @@ import java.io.File;
 import java.net.URL;
 
 public class Main extends Application {
+    static int timePerPuzzle = 60;
 
     public static void main (String[] args){
         Thread gameThread = new Thread(new GameManager());
-        Thread timerThread = new Thread(new TimerClass(30));
+        Thread timerThread = new Thread(new TimerClass(timePerPuzzle));
         gameThread.start();
         timerThread.start();
         Application.launch(args);
     }
-
 
     @Override
     public void start(Stage primaryStage) throws Exception {
