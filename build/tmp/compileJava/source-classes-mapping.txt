@@ -22,7 +22,7 @@ softwaredesign/Puzzle.java
  softwaredesign.Puzzle
 softwaredesign/FileReader.java
  softwaredesign.FileReader
-softwaredesign/GameManager.java
- softwaredesign.GameManager
 softwaredesign/Main.java
  softwaredesign.Main
+softwaredesign/GameManager.java
+ softwaredesign.GameManager

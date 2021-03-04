@@ -32,25 +32,32 @@ public class GameManager {
         moveHistory.peek().printGameState();
     }
 
-    public void runGame(){
-        printGame();
-        /*String str = "ss\n";
-        String s = null;
+    public void runGame() {
         Scanner scanner = new Scanner(System.in);
         while (!gameOver.getGameOver(this.sequences, this.moveHistory.peek().getBuffer())) {
-            //printGame();
-            System.out.print("Write something: ");
-            while(scanner.hasNextLine()){
-                s = scanner.nextLine();
-            }
-            try {
-                Thread.sleep(5000);
-            } catch(InterruptedException e){
-                System.out.println(e.getMessage());
+            printGame();
+            int row = 0;
+            while (row <= 0 || row > matrix.getMatrix().length) {
+                try {
+                    System.out.println("Choose a row:");
+                    String rowStr = scanner.nextLine();
+                    row = Integer.parseInt(rowStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid format");
+                }
             }
 
-            System.out.println("You wrote: " + s);
-        }*/
+            int col = 0;
+            while (col <= 0 || col > matrix.getMatrix()[row - 1].length) {
+                try {
+                    System.out.println("Choose a column:");
+                    String colStr = scanner.nextLine();
+                    col = Integer.parseInt(colStr);
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid format");
+                }
+            }
+        }
     }
 }
 
