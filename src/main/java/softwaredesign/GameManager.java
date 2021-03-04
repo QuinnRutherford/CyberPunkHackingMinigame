@@ -10,7 +10,6 @@ public class GameManager implements Runnable {
     private Sequences sequences;
     private GameOver gameOver;
     private MoveHistory moves;
-    private TimerClass timer = new TimerClass(5);
 
     public GameManager() {
         this.puzzle = new Puzzle();
