@@ -9,6 +9,7 @@ public class GameManager {
     private Sequences sequences;
     private GameOver gameOver;
     private Stack<GameState> moveHistory = new Stack<>();
+    private TimerClass timer = new TimerClass(5);
 
     public GameManager() {
         this.puzzle = new Puzzle();

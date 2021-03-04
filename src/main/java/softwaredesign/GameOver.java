@@ -2,6 +2,7 @@ package softwaredesign;
 
 public class GameOver {
     private boolean gameOver;
+    private TimerClass timer = new TimerClass(5);
 
     public GameOver() {
         this.gameOver = false;
@@ -14,6 +15,11 @@ public class GameOver {
     }
 
     private boolean updateGameOver(Sequences sequences, GameState gs) {
+
+        Thread timerThread = new Thread(timer); //replace t with puzzle time
+        timerThread.start();
+        if (!timerThread.isAlive()) return true;
+
         for (int i = 0; i < sequences.getNumberOfSeq(); i++) {
             if (checkCorrectSequence(sequences.getNSeq(i), gs)) {
                 return true;

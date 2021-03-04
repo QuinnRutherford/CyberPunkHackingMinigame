@@ -3,7 +3,6 @@ package softwaredesign;
 import java.util.Timer;
 import java.util.TimerTask;
 
-//TODO: function converting seconds to display format
 public class TimerClass implements Runnable {
 
     private final int time; //placeholder for timer per puzzle
@@ -19,11 +18,12 @@ public class TimerClass implements Runnable {
             int tRemaining = time;
             @Override
             public void run() {
+
                 if (tRemaining > 0) {
-                    System.out.println("Time remaining: " + tRemaining);
+                    //System.out.println("Time remaining: " + tRemaining);
                     tRemaining--;
                 } else {
-                    System.out.println("Game over!");
+                    System.out.println("\nTime is up!");
                     timer.cancel();
                     timer.purge();
                 }
