@@ -18,27 +18,13 @@ public final class Sequences {
         }
     }
 
-    private String[][] copySeq(String[][] original) {
-        int longestSeq = 0;
-        for(int i = 0; i < original.length; i++){
-            int tmpLength = original[i].length;
-            if(tmpLength > longestSeq){
-                longestSeq = tmpLength;
-            }
-        }
-        String[][] copy = new String[original.length][longestSeq];
-        for(int i = 0; i < original.length; i++){
-            for(int j = 0; j < original[i].length; j++){
-                copy[i][j] = original[i][j];
-            }
-        }
-        return copy;
-    }
-
     public String[] getNSeq(int seqIndex) {
-        String[][] seqCopy = copySeq(this.sequences);
-        if(seqIndex >= seqCopy.length) throw new RuntimeException("No sequence for this index");
-        return seqCopy[seqIndex];
+        String[] seqCopy = new String[this.sequences[seqIndex].length];
+        for (int i = 0; i < seqCopy.length; i++) {
+            seqCopy[i] = this.sequences[seqIndex][i];
+        }
+
+        return seqCopy;
     }
 
     public int getNumberOfSeq() {
