@@ -12,7 +12,7 @@ import java.net.URL;
 public class Main extends Application {
     static int timePerPuzzle = 60; //In seconds
 
-    public static void main (String[] args){
+    public static void main (String[] args) {
         Thread gameThread = new Thread(new GameManager());
         Thread timerThread = new Thread(new TimerClass(timePerPuzzle));
         gameThread.start();
