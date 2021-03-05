@@ -2,9 +2,11 @@ package softwaredesign;
 
 public class GameOver {
     private boolean gameOver;
+    private boolean win;
 
     public GameOver() {
         this.gameOver = false;
+        this.win = false;
     }
 
     public boolean getGameOver(Sequences sequences, MoveHistory currMove) {
@@ -14,9 +16,9 @@ public class GameOver {
     }
 
     private boolean updateGameOver(Sequences sequences, MoveHistory currMove) {
-
         for (int i = 0; i < sequences.getNumberOfSeq(); i++) {
             if (checkCorrectSequence(sequences.getNSeq(i), currMove)) {
+                this.win = true;
                 return true;
             }
         }
@@ -35,5 +37,8 @@ public class GameOver {
         }
 
         return bufString.contains(seqString);
+    }
+    public boolean getResult(){
+        return this.win;
     }
 }

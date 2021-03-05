@@ -10,7 +10,7 @@ import java.io.File;
 import java.net.URL;
 
 public class Main extends Application {
-    static int timePerPuzzle = 60;
+    static int timePerPuzzle = 60; //In seconds
 
     public static void main (String[] args){
         Thread gameThread = new Thread(new GameManager());

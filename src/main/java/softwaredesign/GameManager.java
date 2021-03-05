@@ -22,6 +22,11 @@ public class GameManager implements Runnable {
         this.sequences = new Sequences(this.puzzle.getSeqTxt());
     }
 
+    @Override
+    public void run() {
+        runGameLoop();
+    }
+
     public void printGame() {
         System.out.println(("\nSequences: "));
         this.sequences.printSequences();
@@ -30,16 +35,13 @@ public class GameManager implements Runnable {
         moves.printCurrGameState();
     }
 
-    @Override
-    public void run() {
-        runGameLoop();
-    }
-
     public void runGameLoop() {
-
         Scanner scanner = new Scanner(System.in);
         //Core game-loop
         while (!gameOver.getGameOver(this.sequences, this.moves)){
+            if(this.moves.isCurrBufferFull()){
+                break;
+            }
             printGame();
             //get user input
             String userChoice;
@@ -75,11 +77,14 @@ public class GameManager implements Runnable {
                 userChoice = this.matrix.getMatrixElement(row - 1, currCol);
                 nextRowCol = row - 1;
             }
-
             moves.newMove(userChoice, nextRowCol);
         }
-
         moves.printCurrGameState();
+        if(gameOver.getResult()){
+            System.out.println("YOU WIN!!!");
+        } else {
+            System.out.println("YOU LOSE!!!");
+        }
         System.exit(0);
     }
 

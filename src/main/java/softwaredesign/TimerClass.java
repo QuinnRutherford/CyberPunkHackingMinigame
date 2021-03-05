@@ -23,7 +23,7 @@ public class TimerClass implements Runnable {
                 if (tRemaining > 0) {
                     tRemaining--;
                 } else {
-                    System.out.println("\nTime is up!");
+                    System.out.println("\nTime is up!\nYOU LOSE!!!");
                     System.exit(0);
                     timer.cancel();
                     timer.purge();

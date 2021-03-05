@@ -63,6 +63,4 @@ public final class GameState {
         buffer.printBuffer();
         System.out.println("----------------");
     }
-
-
 }
