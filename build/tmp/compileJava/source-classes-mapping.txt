@@ -21,6 +21,8 @@ softwaredesign/FileReader.java
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
+softwaredesign/Launcher.java
+ softwaredesign.Launcher
 softwaredesign/TimerClass.java
  softwaredesign.TimerClass
  softwaredesign.TimerClass$1
