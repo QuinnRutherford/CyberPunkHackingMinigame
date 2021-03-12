@@ -20,10 +20,7 @@ public final class Sequences {
 
     public String[] getNSeq(int seqIndex) {
         String[] seqCopy = new String[this.sequences[seqIndex].length];
-        for (int i = 0; i < seqCopy.length; i++) {
-            seqCopy[i] = this.sequences[seqIndex][i];
-        }
-
+        System.arraycopy(this.sequences[seqIndex], 0, seqCopy, 0, seqCopy.length);
         return seqCopy;
     }
 

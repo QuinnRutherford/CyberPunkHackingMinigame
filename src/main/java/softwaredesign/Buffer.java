@@ -33,8 +33,7 @@ public final class Buffer {
     }
 
     public int getSize() {
-        int copySize = this.size;
-        return copySize;
+        return this.size;
     }
 
     public String[] getValues() {
@@ -48,14 +47,9 @@ public final class Buffer {
             if (this.buffer[i] == null) {
                 System.out.print("_");
             } else {
-                System.out.print(this.buffer[i]);
-            }
-
-            if (i != this.buffer.length - 1) {
-                System.out.print(" ");
-            } else {
-                System.out.println();
+                System.out.print(this.buffer[i] + " ");
             }
         }
+        System.out.println();
     }
 }

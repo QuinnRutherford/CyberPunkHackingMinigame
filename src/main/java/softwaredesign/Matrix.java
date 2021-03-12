@@ -10,16 +10,13 @@ public final class Matrix {
         for(int i = 0; i < lines.length; i++){
             String[] tmpRow = lines[i].split(" ");
                 if(i == 0) newMatrix = new String[lines.length][tmpRow.length];
-            for(int j = 0; j < tmpRow.length; j++){
-                newMatrix[i][j] = tmpRow[j];
-            }
+            System.arraycopy(tmpRow, 0, newMatrix[i], 0, tmpRow.length);
         }
         this.matrix = newMatrix;
     }
 
     public String getMatrixElement(int x, int y) {
-        String elementCopy = this.matrix[x][y];
-        return elementCopy;
+        return this.matrix[x][y];
     }
 
     public int getMatrixDims() {

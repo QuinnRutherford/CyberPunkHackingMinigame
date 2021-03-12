@@ -87,7 +87,5 @@ public class GameManager implements Runnable {
         }
         System.exit(0);
     }
-
-
 }
 

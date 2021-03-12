@@ -5,8 +5,6 @@ public class Puzzle {
     private int bufferLen;
     private String seqTxt;
     private String matrixTxt;
-    private final int MAX_FILE_NUM = 40;
-    private final int MIN_FILE_NUM = 1;
 
     public void getNextPuzzle() {
         this.currPuzzle = getPuzzleContent();
@@ -31,6 +29,8 @@ public class Puzzle {
     }
 
     private String getPuzzleContent(){
+        final int MAX_FILE_NUM = 40;
+        final int MIN_FILE_NUM = 1;
         int fileNumber = getRandomNumber(MIN_FILE_NUM, MAX_FILE_NUM);
         FileReader reader = new FileReader();
         String currentDirectory = System.getProperty("user.dir");
@@ -40,18 +40,15 @@ public class Puzzle {
     }
 
     public int getBufferLen(){
-        int copyBufferLen = this.bufferLen;
-        return copyBufferLen;
+        return this.bufferLen;
     }
 
     public String getMatrixTxt(){
-        String copy = new String(this.matrixTxt);
-        return copy;
+        return this.matrixTxt;
     }
 
     public String getSeqTxt(){
-        String copy = new String(this.seqTxt);
-        return copy;
+        return this.seqTxt;
     }
 
 }

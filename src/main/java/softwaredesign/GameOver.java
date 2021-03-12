@@ -11,8 +11,7 @@ public class GameOver {
 
     public boolean getGameOver(Sequences sequences, MoveHistory currMove) {
         this.gameOver = updateGameOver(sequences, currMove);
-        boolean gameOverCopy = this.gameOver;
-        return gameOverCopy;
+        return this.gameOver;
     }
 
     private boolean updateGameOver(Sequences sequences, MoveHistory currMove) {
@@ -35,7 +34,6 @@ public class GameOver {
         for (int i = 0; i < seq.length; i++) {
             seqString += seq[i];
         }
-
         return bufString.contains(seqString);
     }
     public boolean getResult(){
