@@ -14,9 +14,7 @@ public class Main extends Application {
 
     public static void main (String[] args) {
         Thread gameThread = new Thread(new GameManager());
-        Thread timerThread = new Thread(new TimerClass(timePerPuzzle));
         gameThread.start();
-        timerThread.start();
         Application.launch(args);
     }
 

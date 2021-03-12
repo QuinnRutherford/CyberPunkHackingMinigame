@@ -8,18 +8,29 @@ public class GameManager implements Runnable {
     private Sequences sequences;
     private GameOver gameOver;
     private MoveHistory moves;
+    private TimerClass gameTimer;
 
     public GameManager() {
         this.puzzle = new Puzzle();
         this.setupPuzzle();
         moves = new MoveHistory(this.puzzle.getBufferLen());
         this.gameOver = new GameOver();
+
+        gameTimer = new TimerClass(10, this::lose);
+
     }
 
     private void setupPuzzle() {
         this.puzzle.getNextPuzzle();
         this.matrix = new Matrix(this.puzzle.getMatrixTxt());
         this.sequences = new Sequences(this.puzzle.getSeqTxt());
+    }
+
+
+    public void lose() {
+        System.out.println("GAME OVER");
+        //Next puzzle
+
     }
 
     @Override
@@ -38,6 +49,7 @@ public class GameManager implements Runnable {
     public void runGameLoop() {
         Scanner scanner = new Scanner(System.in);
         //Core game-loop
+        gameTimer.run();
         while (!gameOver.getGameOver(this.sequences, this.moves)){
             if(this.moves.isCurrBufferFull()){
                 break;
