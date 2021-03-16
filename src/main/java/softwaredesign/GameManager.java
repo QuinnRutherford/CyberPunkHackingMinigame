@@ -1,6 +1,7 @@
 package softwaredesign;
 
 import java.util.Scanner;
+import java.util.Timer;
 
 public class GameManager implements Runnable {
     private Puzzle puzzle;

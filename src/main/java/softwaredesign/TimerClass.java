@@ -3,6 +3,7 @@ package softwaredesign;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class TimerClass implements Runnable {
 
     private final int time; //placeholder for timer per puzzle
@@ -22,7 +23,6 @@ public class TimerClass implements Runnable {
 
             @Override
             public void run() {
-
                 if (tRemaining > 0) {
                     tRemaining--;
                 } else {

@@ -1,14 +1,17 @@
 package softwaredesign;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Main extends Application {
-    static int timePerPuzzle = 60; //In seconds
+    static int timePerPuzzle = 10; //In seconds
     private GameManager gm = new GameManager();
     
     public static void main (String[] args) {
@@ -57,6 +60,42 @@ public class Main extends Application {
             seqLabels[n] = new Label(labelTxtCombined);
             layout.add(seqLabels[n], matrixDim + 1, n + matrixDim);
         }
+
+        //Timer gui
+        Stage timer  = new Stage();
+        GridPane tlayout = new GridPane();
+
+        Label minutesTimer = new Label();
+        Label secondsTimer = new Label();
+        tlayout.add(minutesTimer, 0,0);
+        tlayout.add(secondsTimer, 1, 0);
+
+        //Create animation
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
+            timePerPuzzle--;
+            String minutes = String.format("%02d", (timePerPuzzle % 3600)/60);
+            String seconds = String.format("%02d", timePerPuzzle % 60);
+            minutesTimer.setText(minutes);
+            secondsTimer.setText(seconds);
+
+            if (timePerPuzzle <= 0) {
+                timeline.stop();
+                //game over gui;
+                timer.close();
+                window.close();
+
+            }
+        });
+
+        timeline.getKeyFrames().add(frame);
+        timeline.playFromStart();
+
+        //Set timer widow
+        Scene sceneT = new Scene(tlayout, 150, 50);
+        timer.setScene(sceneT);
+        timer.show();
 
         //show window
         Scene scene = new Scene(layout, 500, 500);

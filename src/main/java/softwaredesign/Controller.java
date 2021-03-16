@@ -2,22 +2,27 @@ package softwaredesign;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
+
+import java.lang.reflect.Method;
 
 public class Controller {
 
     @FXML
     private Label minutesTimer;
-
     @FXML
     private Label secondsTimer;
 
-    int secs = Main.timePerPuzzle;
 
     public void initialize() {
-        Timeline timeline = new Timeline();
+        /*Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
 
         KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
@@ -36,9 +41,14 @@ public class Controller {
 
         timeline.getKeyFrames().add(frame);
         timeline.playFromStart();
-
     }
 
+*/
 
 
+    }
 }
+
+
+
+
