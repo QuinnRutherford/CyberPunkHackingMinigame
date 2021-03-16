@@ -9,14 +9,14 @@ public class GameOver {
         this.win = false;
     }
 
-    public boolean getGameOver(Sequences sequences, MoveHistory currMove) {
-        this.gameOver = updateGameOver(sequences, currMove);
+    public boolean getGameOver(Puzzle puzzle, MoveHistory currMove) {
+        this.gameOver = updateGameOver(puzzle, currMove);
         return this.gameOver;
     }
 
-    private boolean updateGameOver(Sequences sequences, MoveHistory currMove) {
-        for (int i = 0; i < sequences.getNumberOfSeq(); i++) {
-            if (checkCorrectSequence(sequences.getNSeq(i), currMove)) {
+    private boolean updateGameOver(Puzzle puzzle, MoveHistory currMove) {
+        for (int i = 0; i < puzzle.getCurrNumberOfSeq(); i++) {
+            if (checkCorrectSequence(puzzle.getCurrNSeq(i), currMove)) {
                 this.win = true;
                 return true;
             }

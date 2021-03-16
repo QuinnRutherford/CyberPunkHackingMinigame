@@ -15,8 +15,8 @@ public final class Matrix {
         this.matrix = newMatrix;
     }
 
-    public String getMatrixElement(int x, int y) {
-        return this.matrix[x][y];
+    public String getMatrixElement(int row, int col) {
+        return this.matrix[row][col];
     }
 
     public int getMatrixDims() {

@@ -4,28 +4,21 @@ import java.util.Scanner;
 
 public class GameManager implements Runnable {
     private Puzzle puzzle;
-    private Matrix matrix;
-    private Sequences sequences;
     private GameOver gameOver;
     private MoveHistory moves;
     private TimerClass gameTimer;
 
     public GameManager() {
         this.puzzle = new Puzzle();
-        this.setupPuzzle();
+        this.puzzle.getNextPuzzle();
+
         moves = new MoveHistory(this.puzzle.getBufferLen());
+
         this.gameOver = new GameOver();
 
         gameTimer = new TimerClass(10, this::lose);
 
     }
-
-    private void setupPuzzle() {
-        this.puzzle.getNextPuzzle();
-        this.matrix = new Matrix(this.puzzle.getMatrixTxt());
-        this.sequences = new Sequences(this.puzzle.getSeqTxt());
-    }
-
 
     public void lose() {
         System.out.println("GAME OVER");
@@ -40,9 +33,9 @@ public class GameManager implements Runnable {
 
     public void printGame() {
         System.out.println(("\nSequences: "));
-        this.sequences.printSequences();
+        System.out.println("Sequences Filler");
         System.out.println("\nMatrix: ");
-        this.matrix.printMatrix();
+        System.out.println("Matrix Filler");
         moves.printCurrGameState();
     }
 
@@ -50,7 +43,7 @@ public class GameManager implements Runnable {
         Scanner scanner = new Scanner(System.in);
         //Core game-loop
         gameTimer.run();
-        while (!gameOver.getGameOver(this.sequences, this.moves)){
+        while (!gameOver.getGameOver(this.puzzle, this.moves)){
             if(this.moves.isCurrBufferFull()){
                 break;
             }
@@ -62,7 +55,7 @@ public class GameManager implements Runnable {
                 int currRow = moves.getCurrNumRowCol();
                 System.out.println("The current row is: " + (currRow + 1));
                 int col = 0;
-                while (col <= 0 || col > matrix.getMatrixDims()) {
+                while (col <= 0 || col > this.puzzle.getCurrMatrixDims()) {
                     try {
                         System.out.println("Choose a column:");
                         String colStr = scanner.nextLine();
@@ -71,13 +64,13 @@ public class GameManager implements Runnable {
                         System.out.println("Invalid format");
                     }
                 }
-                userChoice = this.matrix.getMatrixElement(currRow, col - 1);
+                userChoice = this.puzzle.getCurrMatrixElement(currRow, col - 1);
                 nextRowCol = col - 1;
             } else {
                 int currCol = moves.getCurrNumRowCol();
                 System.out.println("The current column is: " + (currCol + 1));
                 int row = 0;
-                while (row <= 0 || row > matrix.getMatrixDims()) {
+                while (row <= 0 || row > this.puzzle.getCurrMatrixDims()) {
                     try {
                         System.out.println("Choose a row:");
                         String rowStr = scanner.nextLine();
@@ -86,7 +79,7 @@ public class GameManager implements Runnable {
                         System.out.println("Invalid format");
                     }
                 }
-                userChoice = this.matrix.getMatrixElement(row - 1, currCol);
+                userChoice = this.puzzle.getCurrMatrixElement(row - 1, currCol);
                 nextRowCol = row - 1;
             }
             moves.newMove(userChoice, nextRowCol);
