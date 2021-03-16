@@ -16,6 +16,8 @@ softwaredesign/Main.java
  softwaredesign.Main
 softwaredesign/GameManager.java
  softwaredesign.GameManager
+softwaredesign/FileReader.java
+ softwaredesign.FileReader
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
