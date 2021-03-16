@@ -56,8 +56,8 @@ public class Puzzle {
         return this.sequences.getNSeq(seqIndex);
     }
 
-    public int getCurrNumberOfSeq() {
-        return this.sequences.getNumberOfSeq();
+    public int getCurrNumOfSeq() {
+        return this.sequences.getNumOfSeq();
     }
 
     public String getCurrMatrixElement(int row, int col) {

@@ -8,12 +8,13 @@ softwaredesign/MoveHistory.java
  softwaredesign.MoveHistory
 softwaredesign/Test.java
  softwaredesign.Test
-softwaredesign/Controller.java
- softwaredesign.Controller
+softwaredesign/Buffer.java
+ softwaredesign.Buffer
 softwaredesign/Matrix.java
  softwaredesign.Matrix
-softwaredesign/Main.java
- softwaredesign.Main
+softwaredesign/TimerClass.java
+ softwaredesign.TimerClass
+ softwaredesign.TimerClass$1
 softwaredesign/GameManager.java
  softwaredesign.GameManager
 softwaredesign/FileReader.java
@@ -21,10 +22,9 @@ softwaredesign/FileReader.java
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
-softwaredesign/TimerClass.java
- softwaredesign.TimerClass
- softwaredesign.TimerClass$1
+softwaredesign/Controller.java
+ softwaredesign.Controller
+softwaredesign/Main.java
+ softwaredesign.Main
 softwaredesign/Launcher.java
  softwaredesign.Launcher
-softwaredesign/Buffer.java
- softwaredesign.Buffer

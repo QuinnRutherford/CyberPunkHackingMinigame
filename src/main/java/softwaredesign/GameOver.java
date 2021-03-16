@@ -15,7 +15,7 @@ public class GameOver {
     }
 
     private boolean updateGameOver(Puzzle puzzle, MoveHistory currMove) {
-        for (int i = 0; i < puzzle.getCurrNumberOfSeq(); i++) {
+        for (int i = 0; i < puzzle.getCurrNumOfSeq(); i++) {
             if (checkCorrectSequence(puzzle.getCurrNSeq(i), currMove)) {
                 this.win = true;
                 return true;

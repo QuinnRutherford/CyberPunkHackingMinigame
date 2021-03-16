@@ -77,12 +77,4 @@ public class Test {
         gsStack.peek().printGameState();
 
     }
-
-    public void ArrayTest() {
-        Sequences sequences = new Sequences("A B\nD B E\nA B\n");
-        for (int i = 0; i < sequences.getNumberOfSeq(); i++) {
-            String [] temp = sequences.getNSeq(i);
-            System.out.println(temp.length);
-        }
-    }
 }

@@ -24,7 +24,7 @@ public final class Sequences {
         return seqCopy;
     }
 
-    public int getNumberOfSeq() {
+    public int getNumOfSeq() {
         return sequences.length;
     }
 

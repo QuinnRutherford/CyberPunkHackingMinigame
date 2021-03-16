@@ -91,5 +91,24 @@ public class GameManager implements Runnable {
         }
         System.exit(0);
     }
+
+    public int getCurrMatrixDims() {
+        return this.puzzle.getCurrMatrixDims();
+    }
+
+    public int getCurrNumOfSeq() {
+        return this.puzzle.getCurrNumOfSeq();
+    }
+
+    public String[] getCurrNSeq(int index) {
+        return this.puzzle.getCurrNSeq(index);
+    }
+
+    public String getCurrMatrixValueAt(int row, int col) {
+        String a = this.puzzle.getCurrMatrixElement(row, col);
+        System.out.println(a);
+        return a;
+    }
+
 }
 
