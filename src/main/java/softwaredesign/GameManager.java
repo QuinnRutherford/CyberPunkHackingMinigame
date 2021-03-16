@@ -23,12 +23,11 @@ public class GameManager implements Runnable {
     public void lose() {
         System.out.println("GAME OVER");
         //Next puzzle
-
     }
 
     @Override
     public void run() {
-        runGameLoop();
+        runConsoleGameLoop();
     }
 
     public void printGame() {
@@ -39,7 +38,7 @@ public class GameManager implements Runnable {
         moves.printCurrGameState();
     }
 
-    public void runGameLoop() {
+    public void runConsoleGameLoop() {
         Scanner scanner = new Scanner(System.in);
         //Core game-loop
         gameTimer.run();

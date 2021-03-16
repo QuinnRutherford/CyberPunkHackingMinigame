@@ -1,7 +1,6 @@
 package softwaredesign;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Puzzle {
@@ -35,31 +34,51 @@ public class Puzzle {
         return (int)(Math.random() * (max - min + 1) + min);
     }
 
-    //TODO: Put puzzles into jar
-    private String getPuzzleContent(){
+    private String getPuzzleContent() {
         final int MIN_FILE_NUM = 1;
         final int MAX_FILE_NUM = 40;
         int fileNumber = getRandomNumber(MIN_FILE_NUM, MAX_FILE_NUM);
-        String currentDirectory = System.getProperty("user.dir");
-        String fullFilePath = currentDirectory + "\\puzzles\\" + fileNumber + ".txt";
-        String puzzleTxt = readFile(fullFilePath);
-        return puzzleTxt;
+        String fileName = "puzzles/" + fileNumber + ".txt";
+        String file = "";
+        try {
+            file = readFile(fileName);
+        }
+        catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+        return file;
     }
 
-    private String readFile(String file_name) {
-        String fileContent = "";
-        try {
-            File file = new File(file_name);
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                fileContent += scanner.nextLine() + "\n";
-            }
-            scanner.close();
-        } catch (FileNotFoundException e){
-            System.out.println(e.getMessage());
-            System.exit(1);
+    private String readFile(String fileName) throws IOException {
+        System.out.println("getResourcesAsStream : " + fileName);
+        InputStream is = getFileFromResourceAsStream(fileName);
+        String output = inputStreamToString(is);
+        return output;
+    }
+
+    private InputStream getFileFromResourceAsStream(String fileName) {
+
+        // The class loader that loaded the class
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream(fileName);
+
+        // the stream holding the file content
+        if (inputStream == null) {
+            throw new IllegalArgumentException("file not found! " + fileName);
+        } else {
+            return inputStream;
         }
-        fileContent = fileContent.substring(0, fileContent.length() - 1);
+    }
+
+    public static String inputStreamToString(InputStream i) throws IOException {
+        String fileContent = "";
+        BufferedReader r = new BufferedReader(new InputStreamReader(i));
+        String l;
+        while((l = r.readLine()) != null) {
+            System.out.println("LINE: "+l);
+            fileContent += l + "\n";
+        }
+        i.close();
         return fileContent;
     }
 
