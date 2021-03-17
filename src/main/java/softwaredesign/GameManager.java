@@ -1,9 +1,8 @@
 package softwaredesign;
 
 import java.util.Scanner;
-import java.util.Timer;
 
-public class GameManager implements Runnable {
+public class GameManager {
     private Puzzle puzzle;
     private GameOver gameOver;
     private MoveHistory moves;
@@ -26,9 +25,33 @@ public class GameManager implements Runnable {
         //Next puzzle
     }
 
-    @Override
-    public void run() {
-        runConsoleGameLoop();
+    public void AddElementToBuffer (int row, int col) {
+        //check if move is allowed
+        if (this.moves.getCurrAxis() == GameState.rowCol.ROW && this.moves.getCurrNumRowCol() != row)
+            return;
+        else if (this.moves.getCurrAxis() == GameState.rowCol.COL && this.moves.getCurrNumRowCol() != col)
+            return;
+
+        //execute move
+        int nextRowCol;
+        if (this.moves.getCurrAxis() == GameState.rowCol.ROW) {
+            nextRowCol = col;
+        } else {
+            nextRowCol = row;
+        }
+
+        this.moves.newMove(this.puzzle.getCurrMatrixElement(row, col), nextRowCol);
+
+        //DISPLAY BUFFER
+        this.moves.printCurrGameState();
+
+        //check for gameOver
+        if (this.gameOver.getGameOver(this.puzzle, this.moves)) {
+            System.out.println("You game over!!!");
+        }
+        //time is over (separate function)
+
+
     }
 
     public void printGame() {
@@ -106,9 +129,7 @@ public class GameManager implements Runnable {
     }
 
     public String getCurrMatrixValueAt(int row, int col) {
-        String a = this.puzzle.getCurrMatrixElement(row, col);
-        System.out.println(a);
-        return a;
+        return this.puzzle.getCurrMatrixElement(row, col);
     }
 
 }

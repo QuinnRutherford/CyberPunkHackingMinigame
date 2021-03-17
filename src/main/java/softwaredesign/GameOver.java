@@ -21,6 +21,10 @@ public class GameOver {
                 return true;
             }
         }
+
+        if (currMove.isCurrBufferFull())
+            return true;
+
         return false;
     }
 
