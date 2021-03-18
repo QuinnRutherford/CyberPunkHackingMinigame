@@ -24,9 +24,9 @@ softwaredesign/FileReader.java
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
-softwaredesign/Launcher.java
- softwaredesign.Launcher
 softwaredesign/Main.java
  softwaredesign.Main
 softwaredesign/GUIBuilder.java
  softwaredesign.GUIBuilder
+softwaredesign/Launcher.java
+ softwaredesign.Launcher

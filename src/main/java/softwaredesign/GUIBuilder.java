@@ -10,12 +10,15 @@ import javafx.util.Duration;
 
 public class GUIBuilder {
     private int timePerPuzzle;
+    private Scene mainScene;
+    private Scene resultScene;
 
-    public GUIBuilder (final int timePerPuzzle) {
+    public GUIBuilder (GameManager gm, final int timePerPuzzle) {
         this.timePerPuzzle = timePerPuzzle;
+        this.mainScene = buildMainScene(gm);
     }
 
-    public Scene sceneBuilder(GameManager gm) {
+    private Scene buildMainScene(GameManager gm) {
         GridPane layoutPane = new GridPane();
         layoutPane.setStyle("-fx-background-color: black;");
         GridPane matrixPane = matrixPaneBuilder(gm);
@@ -129,5 +132,13 @@ public class GUIBuilder {
         timeline.playFromStart();
 
         return timerPane;
+    }
+
+    public Scene getMainScene(){
+        return this.mainScene;
+    }
+
+    public Scene getResultScene(){
+        return this.resultScene;
     }
 }

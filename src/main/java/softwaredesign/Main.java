@@ -14,8 +14,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        GUIBuilder guiBuilder = new GUIBuilder(timePerPuzzle);
-        Scene scene = guiBuilder.sceneBuilder(this.gm);
+        GUIBuilder guiBuilder = new GUIBuilder(gm, timePerPuzzle);
+        Scene scene = guiBuilder.getMainScene();
 
         primaryStage.setResizable(false);
         primaryStage.setTitle("CyberPunk Hacking Mini-game");
