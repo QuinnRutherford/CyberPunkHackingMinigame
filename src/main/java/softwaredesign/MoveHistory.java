@@ -43,7 +43,7 @@ public class MoveHistory {
     }
 
     public void undoMove() {
-        if (!this.moveHistory.empty())
+        if (this.moveHistory.size() > 1)
             this.moveHistory.pop();
     }
 }
