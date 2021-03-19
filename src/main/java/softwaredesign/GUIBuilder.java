@@ -12,7 +12,6 @@ public class GUIBuilder {
     private int timePerPuzzle;
     private Scene mainScene;
     private Scene resultScene;
-
     private GridPane bufferPane = new GridPane();
 
     public GUIBuilder (GameManager gm, final int timePerPuzzle) {
@@ -21,20 +20,27 @@ public class GUIBuilder {
     }
 
     private Scene buildMainScene(GameManager gm) {
+        //Creating main pane
         GridPane layoutPane = new GridPane();
         layoutPane.setStyle("-fx-background-color: black;");
+
+        //Creating the internal panes
         GridPane matrixPane = matrixPaneBuilder(gm);
         GridPane sequencePane = sequencePaneBuilder(gm);
         GridPane timerPane = timerPaneBuilder();
+        GridPane controlPane = controlPaneBuilder(gm);
+
+        //Adding style to internal panes
         timerPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
         sequencePane.setStyle("-fx-background-color: black; -fx-border-color: green;");
         this.bufferPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
-        GridPane controlPane = controlPaneBuilder(gm);
 
+        //Adding a blank space between the internal panes
         Label space = new Label();
         space.setPrefHeight(1);
         space.setPrefWidth(20);
 
+        //Positioning elements in the layout
         layoutPane.add(timerPane, 0, 0);
         layoutPane.add(matrixPane, 0, 1);
         layoutPane.add(controlPane, 0, 2);
@@ -67,7 +73,7 @@ public class GUIBuilder {
                 final int COL = col;
                 matrixButtons[col][row].setOnAction(e -> {
                     gm.addElementToBuffer(ROW, COL);
-                    updateBuffer(gm);
+                    updateBufferDisplayValues(gm);
                 });
                 matrixPane.add(matrixButtons[col][row], col, row);
             }
@@ -148,31 +154,6 @@ public class GUIBuilder {
         return timerPane;
     }
 
-    private void updateBuffer(GameManager gm) {
-        GridPane newBufferPane = new GridPane();
-        String textStyle = "-fx-text-fill: green; -fx-font-size: 16; -fx-border-color: green;";
-
-        int bufferSize = gm.getCurrBufferSize();
-
-        Label[] bufferLabels = new Label[bufferSize];
-        //copy previous buffer values
-        for(int i = 0;i < bufferSize-1; i++) {
-            bufferLabels[i] = new Label(gm.getCurrBufferValue(i));
-            bufferLabels[i].setPrefWidth(30);
-            bufferLabels[i].setPrefHeight(50);
-            bufferLabels[i].setStyle(textStyle);
-            newBufferPane.add(bufferLabels[i], i, 0);
-        }
-
-        Label newElement = new Label(gm.getCurrBufferValue(bufferSize));
-        newElement.setPrefWidth(30);
-        newElement.setPrefHeight(50);
-        newElement.setStyle(textStyle);
-        newBufferPane.add(newElement, bufferSize-1, 0);
-
-        this.bufferPane = newBufferPane;
-    }
-
     private GridPane controlPaneBuilder(GameManager gm) {
         GridPane controlPane = new GridPane();
 
@@ -193,6 +174,21 @@ public class GUIBuilder {
         controlPane.add(refresh, 0, 0);
 
         return controlPane;
+    }
+
+    private void updateBufferDisplayValues(GameManager gm) {
+        int bufferLength = gm.getCurrBufferLength();
+        Label[] bufferLabels = new Label[bufferLength];
+        String textStyle = "-fx-text-fill: green; -fx-font-size: 16;";
+        this.bufferPane.getChildren().removeAll();
+        for(int n = 0; n < bufferLength; n++) {
+            String bufferElementTxt = gm.getCurrBufferValue(n);
+            bufferLabels[n] = new Label(bufferElementTxt);
+            bufferLabels[n].setPrefWidth(30);
+            bufferLabels[n].setPrefHeight(50);
+            bufferLabels[n].setStyle(textStyle);
+            this.bufferPane.add(bufferLabels[n], n, 0);
+        }
     }
 
     public Scene getMainScene(){

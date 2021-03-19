@@ -16,7 +16,6 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         GUIBuilder guiBuilder = new GUIBuilder(gm, timePerPuzzle);
         Scene scene = guiBuilder.getMainScene();
-
         //tell scene that new values are displayed
 
         primaryStage.setResizable(false);
