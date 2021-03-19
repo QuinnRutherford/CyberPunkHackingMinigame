@@ -139,6 +139,10 @@ public class GameManager {
         return this.moves.getCurrBufferLength();
     }
 
+    public int getCurrBufferSize() {
+        return this.moves.getCurrBufferSize();
+    }
+
     public String getCurrBufferValue(int n) {
         return this.moves.getCurrBufferValues()[n];
     }
