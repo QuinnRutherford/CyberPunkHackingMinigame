@@ -132,5 +132,13 @@ public class GameManager {
         return this.puzzle.getCurrMatrixElement(row, col);
     }
 
+    public int getCurrBufferSize() {
+        return this.moves.getCurrBufferSize();
+    }
+
+    public String getCurrBufferValue(int n) {
+        return this.moves.getCurrBufferValues()[n];
+    }
+
 }
 

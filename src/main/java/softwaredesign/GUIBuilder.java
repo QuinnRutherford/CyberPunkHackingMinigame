@@ -26,6 +26,8 @@ public class GUIBuilder {
         GridPane timerPane = timerPaneBuilder();
         timerPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
         sequencePane.setStyle("-fx-background-color: black; -fx-border-color: green;");
+        GridPane bufferPane = bufferPaneBuilder(gm);
+        bufferPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
 
         Label space = new Label();
         space.setPrefHeight(1);
@@ -34,9 +36,16 @@ public class GUIBuilder {
 
         layoutPane.add(timerPane, 0, 0);
         layoutPane.add(matrixPane, 0, 1);
+        layoutPane.add(bufferPane, 2, 0);
         layoutPane.add(sequencePane, 2, 1);
 
         return new Scene(layoutPane, 550, 350);
+    }
+
+    //TODO: finish this to display when game ends
+    private Scene buildResultScene() {
+        GridPane grid = new GridPane();
+        return new Scene(grid);
     }
 
     private GridPane matrixPaneBuilder(GameManager gm) {
@@ -51,7 +60,6 @@ public class GUIBuilder {
                 //change button size
                 matrixButtons[col][row].setPrefWidth(50);
                 matrixButtons[col][row].setPrefHeight(50);
-                matrixButtons[col][row].setId("BUTTON");
                 final int ROW = row;
                 final int COL = col;
                 matrixButtons[col][row].setOnAction(e -> gm.AddElementToBuffer(ROW, COL));
@@ -134,11 +142,31 @@ public class GUIBuilder {
         return timerPane;
     }
 
+    private GridPane bufferPaneBuilder(GameManager gm) {
+        GridPane bufferPane = new GridPane();
+        String textStyle = "-fx-text-fill: green; -fx-font-size: 16; -fx-border-color: green;";
+
+        int bufferSize = gm.getCurrBufferSize();
+        Label[] bufferLabels = new Label[bufferSize];
+
+        for(int n = 0; n < bufferSize; n++){
+            String bufferElementTxt = gm.getCurrBufferValue(n);
+            bufferLabels[n] = new Label(bufferElementTxt);
+            bufferLabels[n].setPrefWidth(50);
+            bufferLabels[n].setPrefHeight(50);
+            bufferLabels[n].setStyle(textStyle);
+            bufferPane.add(bufferLabels[n], n, 0);
+        }
+
+        return bufferPane;
+    }
+
     public Scene getMainScene(){
         return this.mainScene;
     }
 
-    public Scene getResultScene(){
+    public Scene getResultScene() {
+        this.resultScene = buildResultScene();
         return this.resultScene;
     }
 }
