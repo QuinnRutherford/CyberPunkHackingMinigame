@@ -25,7 +25,7 @@ public class GameManager {
         //Next puzzle
     }
 
-    public void AddElementToBuffer (int row, int col) {
+    public void addElementToBuffer(int row, int col) {
         //check if move is allowed
         if (this.moves.getCurrAxis() == GameState.rowCol.ROW && this.moves.getCurrNumRowCol() != row)
             return;
@@ -50,8 +50,11 @@ public class GameManager {
             System.out.println("You game over!!!");
         }
         //time is over (separate function)
+    }
 
-
+    public void undoMove() {
+        this.moves.undoMove();
+        this.moves.printCurrGameState();
     }
 
     public void printGame() {

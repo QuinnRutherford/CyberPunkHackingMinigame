@@ -13,6 +13,8 @@ public class GUIBuilder {
     private Scene mainScene;
     private Scene resultScene;
 
+    private GridPane bufferPane = new GridPane();
+
     public GUIBuilder (GameManager gm, final int timePerPuzzle) {
         this.timePerPuzzle = timePerPuzzle;
         this.mainScene = buildMainScene(gm);
@@ -26,20 +28,21 @@ public class GUIBuilder {
         GridPane timerPane = timerPaneBuilder();
         timerPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
         sequencePane.setStyle("-fx-background-color: black; -fx-border-color: green;");
-        GridPane bufferPane = bufferPaneBuilder(gm);
-        bufferPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
+        this.bufferPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
+        GridPane controlPane = controlPaneBuilder(gm);
 
         Label space = new Label();
         space.setPrefHeight(1);
         space.setPrefWidth(20);
-        layoutPane.add(space, 1, 0);
 
         layoutPane.add(timerPane, 0, 0);
         layoutPane.add(matrixPane, 0, 1);
-        layoutPane.add(bufferPane, 2, 0);
+        layoutPane.add(controlPane, 0, 2);
+        layoutPane.add(space, 1, 0);
+        layoutPane.add(this.bufferPane, 2, 0);
         layoutPane.add(sequencePane, 2, 1);
 
-        return new Scene(layoutPane, 550, 350);
+        return new Scene(layoutPane, 600, 350);
     }
 
     //TODO: finish this to display when game ends
@@ -62,7 +65,10 @@ public class GUIBuilder {
                 matrixButtons[col][row].setPrefHeight(50);
                 final int ROW = row;
                 final int COL = col;
-                matrixButtons[col][row].setOnAction(e -> gm.AddElementToBuffer(ROW, COL));
+                matrixButtons[col][row].setOnAction(e -> {
+                    gm.addElementToBuffer(ROW, COL);
+                    updateBuffer(gm);
+                });
                 matrixPane.add(matrixButtons[col][row], col, row);
             }
         }
@@ -142,23 +148,51 @@ public class GUIBuilder {
         return timerPane;
     }
 
-    private GridPane bufferPaneBuilder(GameManager gm) {
-        GridPane bufferPane = new GridPane();
+    private void updateBuffer(GameManager gm) {
+        GridPane newBufferPane = new GridPane();
         String textStyle = "-fx-text-fill: green; -fx-font-size: 16; -fx-border-color: green;";
 
         int bufferSize = gm.getCurrBufferSize();
-        Label[] bufferLabels = new Label[bufferSize];
 
-        for(int n = 0; n < bufferSize; n++){
-            String bufferElementTxt = gm.getCurrBufferValue(n);
-            bufferLabels[n] = new Label(bufferElementTxt);
-            bufferLabels[n].setPrefWidth(50);
-            bufferLabels[n].setPrefHeight(50);
-            bufferLabels[n].setStyle(textStyle);
-            bufferPane.add(bufferLabels[n], n, 0);
+        Label[] bufferLabels = new Label[bufferSize];
+        //copy previous buffer values
+        for(int i = 0;i < bufferSize-1; i++) {
+            bufferLabels[i] = new Label(gm.getCurrBufferValue(i));
+            bufferLabels[i].setPrefWidth(30);
+            bufferLabels[i].setPrefHeight(50);
+            bufferLabels[i].setStyle(textStyle);
+            newBufferPane.add(bufferLabels[i], i, 0);
         }
 
-        return bufferPane;
+        Label newElement = new Label(gm.getCurrBufferValue(bufferSize));
+        newElement.setPrefWidth(30);
+        newElement.setPrefHeight(50);
+        newElement.setStyle(textStyle);
+        newBufferPane.add(newElement, bufferSize-1, 0);
+
+        this.bufferPane = newBufferPane;
+    }
+
+    private GridPane controlPaneBuilder(GameManager gm) {
+        GridPane controlPane = new GridPane();
+
+        Button undo = new Button("Undo");
+        Button refresh = new Button("Refresh");
+
+        undo.setPrefWidth(100);
+        undo.setPrefHeight(30);
+
+        undo.setOnAction(e -> gm.undoMove());
+
+        refresh.setPrefWidth(100);
+        refresh.setPrefHeight(30);
+
+        //refresh.setOnAction();
+
+        controlPane.add(undo, 1, 0);
+        controlPane.add(refresh, 0, 0);
+
+        return controlPane;
     }
 
     public Scene getMainScene(){

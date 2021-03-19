@@ -25,7 +25,8 @@ public class MoveHistory {
     }
 
     public void printCurrGameState() {
-        moveHistory.peek().printGameState();
+        if (!this.moveHistory.empty())
+            moveHistory.peek().printGameState();
     }
 
     public GameState.rowCol getCurrAxis() {
@@ -39,5 +40,10 @@ public class MoveHistory {
     public boolean isCurrBufferFull(){
         if(this.getCurrBufferSize() == this.getCurrBufferValues().length) return true;
         else return false;
+    }
+
+    public void undoMove() {
+        if (!this.moveHistory.empty())
+            this.moveHistory.pop();
     }
 }

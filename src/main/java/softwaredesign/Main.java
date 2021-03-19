@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     static int timePerPuzzle = 50; //In seconds
     private final GameManager gm = new GameManager();
-    
+
     public static void main (String[] args) {
         Application.launch(args);
     }
@@ -16,6 +16,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         GUIBuilder guiBuilder = new GUIBuilder(gm, timePerPuzzle);
         Scene scene = guiBuilder.getMainScene();
+
+        //tell scene that new values are displayed
 
         primaryStage.setResizable(false);
         primaryStage.setTitle("CyberPunk Hacking Mini-game");
