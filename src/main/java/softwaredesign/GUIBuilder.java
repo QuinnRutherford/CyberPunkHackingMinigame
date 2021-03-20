@@ -40,10 +40,10 @@ public class GUIBuilder {
 
         //Positioning elements in the layout
         layoutPane.add(timerPane, 0, 0);
-        layoutPane.add(getEmptyPane(), 0, 1);
+        layoutPane.add(getEmptyPane(), 0, 1); //empty pane for spacing
         layoutPane.add(matrixPane, 0, 2);
-        layoutPane.add(getEmptyPane(), 0, 3);
-        layoutPane.add(getEmptyPane(), 1, 0);
+        layoutPane.add(getEmptyPane(), 0, 3); //empty pane for spacing
+        layoutPane.add(getEmptyPane(), 1, 0); //empty pane for spacing
         layoutPane.add(bufferPane, 2, 0);
         layoutPane.add(sequencePane, 2, 2);
         layoutPane.add(controlPane, 2, 4);
