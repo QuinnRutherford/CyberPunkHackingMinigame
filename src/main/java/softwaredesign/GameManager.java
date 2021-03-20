@@ -43,7 +43,7 @@ public class GameManager {
         this.moves.newMove(this.puzzle.getCurrMatrixElement(row, col), nextRowCol);
 
         //DISPLAY BUFFER
-        this.moves.printCurrGameState();
+        //this.moves.printCurrGameState();
 
         //check for gameOver
         if (this.gameOver.getGameOver(this.puzzle, this.moves)) {
@@ -54,7 +54,7 @@ public class GameManager {
 
     public void undoMove() {
         this.moves.undoMove();
-        this.moves.printCurrGameState();
+        //this.moves.printCurrGameState();
     }
 
     public void printGame() {
@@ -137,10 +137,6 @@ public class GameManager {
 
     public int getCurrBufferLength() {
         return this.moves.getCurrBufferLength();
-    }
-
-    public int getCurrBufferSize() {
-        return this.moves.getCurrBufferSize();
     }
 
     public String getCurrBufferValue(int n) {

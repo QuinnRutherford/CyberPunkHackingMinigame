@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 public class GUIBuilder {
@@ -33,22 +34,19 @@ public class GUIBuilder {
         GridPane bufferPane = bufferPaneBuilder(gm);
 
         //Adding style to internal panes
-        timerPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
+        timerPane.setStyle("-fx-background-color: black;");
         sequencePane.setStyle("-fx-background-color: black; -fx-border-color: green;");
-        bufferPane.setStyle("-fx-background-color: black; -fx-border-color: green;");
-
-        //Adding a blank space between the internal panes
-        Label space = new Label();
-        space.setPrefHeight(1);
-        space.setPrefWidth(20);
+        bufferPane.setStyle("-fx-background-color: black;");
 
         //Positioning elements in the layout
         layoutPane.add(timerPane, 0, 0);
-        layoutPane.add(matrixPane, 0, 1);
-        layoutPane.add(controlPane, 0, 2);
-        layoutPane.add(space, 1, 0);
+        layoutPane.add(getEmptyPane(), 0, 1);
+        layoutPane.add(matrixPane, 0, 2);
+        layoutPane.add(getEmptyPane(), 0, 3);
+        layoutPane.add(getEmptyPane(), 1, 0);
         layoutPane.add(bufferPane, 2, 0);
-        layoutPane.add(sequencePane, 2, 1);
+        layoutPane.add(sequencePane, 2, 2);
+        layoutPane.add(controlPane, 2, 4);
 
         return new Scene(layoutPane, 600, 350);
     }
@@ -184,14 +182,17 @@ public class GUIBuilder {
     private GridPane bufferPaneBuilder(GameManager gm) {
         GridPane bufferPane = new GridPane();
         int bufferLength = gm.getCurrBufferLength();
-        String textStyle = "-fx-text-fill: green; -fx-font-size: 16;";
+        String textStyle = "-fx-text-fill: green; -fx-font-size: 16; -fx-border-color: green;";
+        Label title = new Label("BUFFER:  ");
+        title.setStyle("-fx-text-fill: green; -fx-font-size: 16;");
+        bufferPane.add(title, 0, 0);
         for(int n = 0; n < bufferLength; n++) {
             String bufferElementTxt = gm.getCurrBufferValue(n);
             bufferLabels[n] = new Label(bufferElementTxt);
             bufferLabels[n].setPrefWidth(30);
             bufferLabels[n].setPrefHeight(50);
             bufferLabels[n].setStyle(textStyle);
-            bufferPane.add(bufferLabels[n], n, 0);
+            bufferPane.add(bufferLabels[n], n + 1, 0);
         }
         return bufferPane;
     }
@@ -202,6 +203,13 @@ public class GUIBuilder {
             String bufferElementTxt = gm.getCurrBufferValue(n);
             this.bufferLabels[n].setText(bufferElementTxt);
         }
+    }
+
+    private Pane getEmptyPane() {
+        Pane emptyPane = new Pane();
+        emptyPane.setPrefWidth(20);
+        emptyPane.setPrefHeight(20);
+        return emptyPane;
     }
 
     public Scene getMainScene(){
