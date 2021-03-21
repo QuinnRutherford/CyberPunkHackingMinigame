@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        GUIBuilder guiBuilder = new GUIBuilder(gm, timePerPuzzle);
+        GUIBuilder guiBuilder = new GUIBuilder(primaryStage, gm, timePerPuzzle);
         Scene scene = guiBuilder.getMainScene();
         //tell scene that new values are displayed
 

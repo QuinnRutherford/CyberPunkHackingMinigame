@@ -40,6 +40,7 @@ public class GameOver {
         }
         return bufString.contains(seqString);
     }
+
     public boolean getResult(){
         return this.win;
     }

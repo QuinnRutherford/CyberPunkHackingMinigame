@@ -143,5 +143,13 @@ public class GameManager {
         return this.moves.getCurrBufferValues()[n];
     }
 
+    public boolean isGameOver() {
+        return this.gameOver.getGameOver(this.puzzle, this.moves);
+    }
+
+    public boolean getResult() {
+        return this.gameOver.getResult();
+    }
+
 }
 

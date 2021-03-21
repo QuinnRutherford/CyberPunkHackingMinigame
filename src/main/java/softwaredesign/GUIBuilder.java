@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class GUIBuilder {
@@ -14,11 +15,13 @@ public class GUIBuilder {
     private Scene mainScene;
     private Scene resultScene;
     private Label[] bufferLabels;
+    public Stage window;
 
-    public GUIBuilder (GameManager gm, final int timePerPuzzle) {
+    public GUIBuilder (Stage window, GameManager gm, final int timePerPuzzle) {
         this.timePerPuzzle = timePerPuzzle;
         this.bufferLabels = new Label[gm.getCurrBufferLength()];
         this.mainScene = buildMainScene(gm);
+        this.window = window;
     }
 
     private Scene buildMainScene(GameManager gm) {
@@ -51,9 +54,19 @@ public class GUIBuilder {
         return new Scene(layoutPane, 600, 350);
     }
 
-    //TODO: finish this to display when game ends
-    private Scene buildResultScene() {
+    private Scene buildResultScene(GameManager gm) {
         GridPane grid = new GridPane();
+        grid.setStyle("-fx-background-color: black;");
+        grid.setPrefHeight(200);
+        grid.setPrefWidth(300);
+        String labelTxt;
+        if(gm.getResult()) labelTxt = "     YOU WIN";
+        else labelTxt = "    YOU LOSE";
+        Label label = new Label(labelTxt);
+        label.setStyle("-fx-text-align: center; -fx-text-fill: green; -fx-font-size: 40");
+        label.setPrefWidth(300);
+        label.setPrefHeight(200);
+        grid.add(label, 0, 0);
         return new Scene(grid);
     }
 
@@ -74,6 +87,7 @@ public class GUIBuilder {
                 matrixButtons[col][row].setOnAction(e -> {
                     gm.addElementToBuffer(ROW, COL);
                     updateBufferDisplayValues(gm);
+                    if(gm.isGameOver()) setResultScene(gm);
                 });
                 matrixPane.add(matrixButtons[col][row], col, row);
             }
@@ -216,8 +230,8 @@ public class GUIBuilder {
         return this.mainScene;
     }
 
-    public Scene getResultScene() {
-        this.resultScene = buildResultScene();
-        return this.resultScene;
+    public void setResultScene(GameManager gm) {
+        this.resultScene = buildResultScene(gm);
+        this.window.setScene(this.resultScene);
     }
 }
