@@ -2,9 +2,11 @@ package softwaredesign;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -15,6 +17,7 @@ public class GUIBuilder {
     private Scene mainScene;
     private Scene resultScene;
     private Label[] bufferLabels;
+    private Button[][] matrixButtons;
     public Stage window;
 
     public GUIBuilder (Stage window, GameManager gm, final int timePerPuzzle) {
@@ -37,9 +40,7 @@ public class GUIBuilder {
         GridPane bufferPane = bufferPaneBuilder(gm);
 
         //Adding style to internal panes
-        timerPane.setStyle("-fx-background-color: black;");
         sequencePane.setStyle("-fx-background-color: black; -fx-border-color: green;");
-        bufferPane.setStyle("-fx-background-color: black;");
 
         //Positioning elements in the layout
         layoutPane.add(timerPane, 0, 0);
@@ -74,7 +75,7 @@ public class GUIBuilder {
         GridPane matrixPane = new GridPane();
 
         int matrixDim = gm.getCurrMatrixDims();
-        Button[][] matrixButtons = new Button[matrixDim][matrixDim];
+        matrixButtons = new Button[matrixDim][matrixDim];
         for(int row = 0; row < matrixDim; row++){
             for(int col = 0; col < matrixDim; col++){
                 String buttonTxt = gm.getCurrMatrixValueAt(row, col);
@@ -87,8 +88,14 @@ public class GUIBuilder {
                 matrixButtons[col][row].setOnAction(e -> {
                     gm.addElementToBuffer(ROW, COL);
                     updateBufferDisplayValues(gm);
+                    for(int i = 0; i < matrixDim; i++) {
+                        for (int j = 0; j < matrixDim; j++) {
+                            setMatrixButtonStyle(gm, matrixButtons[j][i], j, i);
+                        }
+                    }
                     if(gm.isGameOver()) setResultScene(gm);
                 });
+                setMatrixButtonStyle(gm, matrixButtons[COL][ROW], COL, ROW);
                 matrixPane.add(matrixButtons[col][row], col, row);
             }
         }
@@ -181,6 +188,11 @@ public class GUIBuilder {
         undo.setOnAction(e -> {
             gm.undoMove();
             updateBufferDisplayValues(gm);
+            for(int i = 0; i < gm.getCurrMatrixDims(); i++) {
+                for (int j = 0; j < gm.getCurrMatrixDims(); j++) {
+                    setMatrixButtonStyle(gm, matrixButtons[j][i], j, i);
+                }
+            }
         });
 
         refresh.setPrefWidth(100);
@@ -225,6 +237,37 @@ public class GUIBuilder {
         emptyPane.setPrefWidth(20);
         emptyPane.setPrefHeight(20);
         return emptyPane;
+    }
+
+    private void setMatrixButtonStyle(GameManager gm, Button button, int col, int row) {
+        String normalStyle = "-fx-background-color: black; -fx-text-fill: green; -fx-border-color: green;";
+        String specialStyle = "-fx-background-color: green; -fx-text-fill: white; -fx-border-color: green;";
+        String style;
+        if (gm.getCurrAxis() == GameState.rowCol.COL && col == gm.getCurrNumRowCol()) {
+            style = specialStyle;
+            button.setStyle(style);
+        } else if (gm.getCurrAxis() == GameState.rowCol.ROW && row == gm.getCurrNumRowCol()) {
+            style = specialStyle;
+            button.setStyle(style);
+        } else {
+            style = normalStyle;
+            button.setStyle(style);
+        }
+        button.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        button.setStyle("-fx-text-fill: black; -fx-background-color: white;");
+                    }
+                });
+
+        button.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        button.setStyle(style);
+                    }
+                });
     }
 
     public Scene getMainScene(){
