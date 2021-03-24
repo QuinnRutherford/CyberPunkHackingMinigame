@@ -4,8 +4,8 @@ softwaredesign/GameOver.java
  softwaredesign.GameOver
 softwaredesign/Sequences.java
  softwaredesign.Sequences
-softwaredesign/GUIBuilder.java
- softwaredesign.GUIBuilder
+softwaredesign/Launcher.java
+ softwaredesign.Launcher
 softwaredesign/MoveHistory.java
  softwaredesign.MoveHistory
 softwaredesign/Test.java
@@ -14,8 +14,8 @@ softwaredesign/Controller.java
  softwaredesign.Controller
 softwaredesign/Matrix.java
  softwaredesign.Matrix
-softwaredesign/Main.java
- softwaredesign.Main
+softwaredesign/Buffer.java
+ softwaredesign.Buffer
 softwaredesign/GameManager.java
  softwaredesign.GameManager
 softwaredesign/FileReader.java
@@ -26,7 +26,7 @@ softwaredesign/GameState.java
 softwaredesign/TimerClass.java
  softwaredesign.TimerClass
  softwaredesign.TimerClass$1
-softwaredesign/Launcher.java
- softwaredesign.Launcher
-softwaredesign/Buffer.java
- softwaredesign.Buffer
+softwaredesign/Main.java
+ softwaredesign.Main
+softwaredesign/GUIBuilder.java
+ softwaredesign.GUIBuilder

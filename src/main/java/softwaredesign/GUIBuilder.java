@@ -32,7 +32,7 @@ public class GUIBuilder {
         //Creating the internal panes
         GridPane matrixPane = matrixPaneBuilder(gm);
         GridPane sequencePane = sequencePaneBuilder(gm);
-        GridPane timerPane = timerPaneBuilder();
+        GridPane timerPane = timerPaneBuilder(gm);
         GridPane controlPane = controlPaneBuilder(gm);
         GridPane bufferPane = bufferPaneBuilder(gm);
 
@@ -125,7 +125,7 @@ public class GUIBuilder {
         return sequencePane;
     }
 
-    private GridPane timerPaneBuilder() {
+    private GridPane timerPaneBuilder(GameManager gm) {
         GridPane timerPane = new GridPane();
         String textStyle = "-fx-text-fill: green; -fx-font-size: 16;";
 
@@ -159,6 +159,7 @@ public class GUIBuilder {
 
             if (timePerPuzzle <= 0) {
                 timeline.stop();
+                setResultScene(gm);
             }
         });
 
