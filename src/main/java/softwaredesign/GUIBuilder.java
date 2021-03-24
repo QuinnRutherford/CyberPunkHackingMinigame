@@ -178,12 +178,14 @@ public class GUIBuilder {
 
     private GridPane controlPaneBuilder(GameManager gm) {
         GridPane controlPane = new GridPane();
+        String normalStyle = "-fx-background-color: black; -fx-border-color: green; -fx-text-fill: green;";
 
         Button undo = new Button("Undo");
         Button refresh = new Button("Refresh");
 
         undo.setPrefWidth(100);
         undo.setPrefHeight(30);
+        undo.setStyle(normalStyle);
 
         undo.setOnAction(e -> {
             gm.undoMove();
@@ -195,8 +197,43 @@ public class GUIBuilder {
             }
         });
 
+        undo.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        undo.setStyle("-fx-text-fill: black; -fx-background-color: white;");
+                    }
+                });
+
+        undo.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        undo.setStyle(normalStyle);
+                    }
+                });
+
+        //------------------------------------------------------------------
+
         refresh.setPrefWidth(100);
         refresh.setPrefHeight(30);
+        refresh.setStyle(normalStyle);
+
+        refresh.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        refresh.setStyle("-fx-text-fill: black; -fx-background-color: white;");
+                    }
+                });
+
+        refresh.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        refresh.setStyle(normalStyle);
+                    }
+                });
 
         //refresh.setOnAction();
 
