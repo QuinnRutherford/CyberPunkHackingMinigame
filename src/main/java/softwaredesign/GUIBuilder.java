@@ -27,6 +27,10 @@ public class GUIBuilder {
         this.window = window;
     }
 
+    public Scene getMainScene(){
+        return this.mainScene;
+    }
+
     private Scene buildMainScene(GameManager gm) {
         //Creating main pane
         GridPane layoutPane = new GridPane();
@@ -219,6 +223,10 @@ public class GUIBuilder {
         refresh.setPrefHeight(30);
         refresh.setStyle(normalStyle);
 
+        refresh.setOnAction(e -> {
+            this.restartGame(gm);
+        });
+
         refresh.addEventHandler(MouseEvent.MOUSE_ENTERED,
                 new EventHandler<MouseEvent>() {
                     @Override
@@ -235,7 +243,7 @@ public class GUIBuilder {
                     }
                 });
 
-        //refresh.setOnAction();
+
 
         controlPane.add(undo, 1, 0);
         controlPane.add(refresh, 0, 0);
@@ -307,12 +315,14 @@ public class GUIBuilder {
                 });
     }
 
-    public Scene getMainScene(){
-        return this.mainScene;
-    }
-
-    public void setResultScene(GameManager gm) {
+    private void setResultScene(GameManager gm) {
         this.resultScene = buildResultScene(gm);
         this.window.setScene(this.resultScene);
+    }
+
+    private void restartGame(GameManager gm) {
+        gm.restartGame();
+        this.mainScene = buildMainScene(gm);
+        this.window.setScene(this.mainScene);
     }
 }

@@ -7,11 +7,9 @@ import java.util.TimerTask;
 public class TimerClass implements Runnable {
 
     private final int time; //placeholder for timer per puzzle
-    private final Runnable callBack;
 
-    public TimerClass(int time, Runnable callBack) {
+    public TimerClass(int time) {
         this.time = time;
-        this.callBack = callBack;
     }
 
     @Override
@@ -26,7 +24,6 @@ public class TimerClass implements Runnable {
                 if (tRemaining > 0) {
                     tRemaining--;
                 } else {
-                    callBack.run();
                     timer.cancel();
                     timer.purge();
                 }

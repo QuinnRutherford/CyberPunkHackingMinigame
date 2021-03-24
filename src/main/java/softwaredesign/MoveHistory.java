@@ -28,11 +28,6 @@ public class MoveHistory {
         return this.moveHistory.peek().getBufferValues().length;
     }
 
-    public void printCurrGameState() {
-        if (!this.moveHistory.empty())
-            moveHistory.peek().printGameState();
-    }
-
     public GameState.rowCol getCurrAxis() {
         return this.moveHistory.peek().getAxis();
     }
