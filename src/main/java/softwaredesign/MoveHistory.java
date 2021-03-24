@@ -41,9 +41,12 @@ public class MoveHistory {
         return this.moveHistory.peek().getNumRowCol();
     }
 
+    public int getCurrRowCol() {
+        return this.moveHistory.peek().getNumRowCol();
+    }
+
     public boolean isCurrBufferFull(){
-        if(this.getCurrBufferSize() == this.getCurrBufferValues().length) return true;
-        else return false;
+        return this.getCurrBufferSize() == this.getCurrBufferValues().length;
     }
 
     public void undoMove() {

@@ -27,9 +27,9 @@ public class GameManager {
 
     public void addElementToBuffer(int row, int col) {
         //check if move is allowed
-        if (this.moves.getCurrAxis() == GameState.rowCol.ROW && this.moves.getCurrNumRowCol() != row)
+        if (this.moves.getCurrAxis() == GameState.rowCol.ROW && this.moves.getCurrRowCol() != row)
             return;
-        else if (this.moves.getCurrAxis() == GameState.rowCol.COL && this.moves.getCurrNumRowCol() != col)
+        else if (this.moves.getCurrAxis() == GameState.rowCol.COL && this.moves.getCurrRowCol() != col)
             return;
 
         //execute move
@@ -42,14 +42,10 @@ public class GameManager {
 
         this.moves.newMove(this.puzzle.getCurrMatrixElement(row, col), nextRowCol);
 
-        //DISPLAY BUFFER
-        //this.moves.printCurrGameState();
-
         //check for gameOver
         if (this.gameOver.getGameOver(this.puzzle, this.moves)) {
             System.out.println("You game over!!!");
         }
-        //time is over (separate function)
     }
 
     public void undoMove() {
@@ -125,6 +121,14 @@ public class GameManager {
 
     public int getCurrNumOfSeq() {
         return this.puzzle.getCurrNumOfSeq();
+    }
+
+    public int getCurrNumRowCol() {
+        return this.moves.getCurrNumRowCol();
+    }
+
+    public GameState.rowCol getCurrAxis() {
+        return this.moves.getCurrAxis();
     }
 
     public String[] getCurrNSeq(int index) {
