@@ -16,7 +16,7 @@ public class GameManager {
 
         this.gameOver = new GameOver();
 
-        gameTimer = new TimerClass(10, this::lose);
+        gameTimer = new TimerClass(50, this::lose);
 
     }
 
