@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    static int timePerPuzzle = 50; //In seconds
+    static final int timePerPuzzle = 50; //In seconds
     private final GameManager gm = new GameManager();
 
     public static void main (String[] args) {
