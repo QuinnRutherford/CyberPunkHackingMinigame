@@ -1,15 +1,12 @@
 package softwaredesign;
 
-import java.util.Scanner;
-import java.util.Timer;
-
 public class GameManager {
     private Puzzle puzzle;
     private GameOver gameOver;
     private MoveHistory moves;
-    private TimerClass gameTimer;
+    //private TimerClass gameTimer;
 
-    private final int timerPerPuzzle = 50;
+    public final int timePerPuzzle = 10;
 
     public GameManager() {
         this.puzzle = new Puzzle();
@@ -18,15 +15,12 @@ public class GameManager {
         this.moves = new MoveHistory(this.puzzle.getBufferLen());
 
         this.gameOver = new GameOver();
-
-        this.gameTimer = new TimerClass(timerPerPuzzle);
     }
 
     public void restartGame() {
         this.puzzle.getNextPuzzle();
         this.moves = new MoveHistory(this.puzzle.getBufferLen());
         this.gameOver = new GameOver();
-        this.gameTimer = new TimerClass(timerPerPuzzle);
     }
 
     public void addElementToBuffer(int row, int col) {

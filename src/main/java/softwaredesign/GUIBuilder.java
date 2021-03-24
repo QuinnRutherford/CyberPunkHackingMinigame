@@ -2,6 +2,7 @@ package softwaredesign;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,7 +13,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.util.Timer;
+
 public class GUIBuilder {
+    private TimerClass timer;
     private int timePerPuzzle;
     private Scene mainScene;
     private Scene resultScene;
@@ -20,8 +24,8 @@ public class GUIBuilder {
     private Button[][] matrixButtons;
     public Stage window;
 
-    public GUIBuilder (Stage window, GameManager gm, final int timePerPuzzle) {
-        this.timePerPuzzle = timePerPuzzle;
+    public GUIBuilder (Stage window, GameManager gm) {
+
         this.bufferLabels = new Label[gm.getCurrBufferLength()];
         this.mainScene = buildMainScene(gm);
         this.window = window;
@@ -32,6 +36,8 @@ public class GUIBuilder {
     }
 
     private Scene buildMainScene(GameManager gm) {
+        this.timePerPuzzle = gm.timePerPuzzle;
+
         //Creating main pane
         GridPane layoutPane = new GridPane();
         layoutPane.setStyle("-fx-background-color: black;");
@@ -137,6 +143,7 @@ public class GUIBuilder {
     }
 
     private GridPane timerPaneBuilder(GameManager gm) {
+        //timer style
         GridPane timerPane = new GridPane();
         String textStyle = "-fx-text-fill: green; -fx-font-size: 16;";
 
@@ -158,27 +165,31 @@ public class GUIBuilder {
         timerPane.add(minutesTimer, 1,0);
         timerPane.add(secondsTimer, 2, 0);
 
-        //Create animation
-        Timeline timeline = new Timeline();
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), actionEvent -> {
-            this.timePerPuzzle--;
-            String minutes = String.format("%02d : ", (timePerPuzzle % 3600)/60);
-            String seconds = String.format("%02d", timePerPuzzle % 60);
-            minutesTimer.setText(minutes);
-            secondsTimer.setText(seconds);
+        Runnable everySec = () -> {
+            Platform.runLater(() -> {
+                //System.out.println(timePerPuzzle);
+                String minutes = String.format("%02d : ", (this.timePerPuzzle % 3600)/60);
+                String seconds = String.format("%02d", this.timePerPuzzle % 60);
+                System.out.println("timer2 time" + this.timePerPuzzle);
+                this.timePerPuzzle--;
+                minutesTimer.setText(minutes);
+                secondsTimer.setText(seconds);
+            });
+        };
 
-            if (timePerPuzzle <= 0) {
-                timeline.stop();
-                setResultScene(gm);
-            }
-        });
+        Runnable over = () -> {
+            Platform.runLater(() -> {
+                System.out.println("over");
+                restartGame(gm);
+            });
+        };
 
-        timeline.getKeyFrames().add(frame);
-        timeline.playFromStart();
+        this.timer = new TimerClass(this.timePerPuzzle, everySec, over);
+        timer.run();
 
         return timerPane;
     }
+
 
     private GridPane controlPaneBuilder(GameManager gm) {
         GridPane controlPane = new GridPane();
@@ -321,6 +332,7 @@ public class GUIBuilder {
     }
 
     private void restartGame(GameManager gm) {
+        timer.timerTask.cancel();
         gm.restartGame();
         this.mainScene = buildMainScene(gm);
         this.window.setScene(this.mainScene);
