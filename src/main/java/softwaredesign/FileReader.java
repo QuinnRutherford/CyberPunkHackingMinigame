@@ -31,7 +31,7 @@ public class FileReader {
         }
     }
 
-    private static String inputStreamToString(InputStream i) throws IOException {
+    private String inputStreamToString(InputStream i) throws IOException {
         String fileContent = "";
         BufferedReader r = new BufferedReader(new InputStreamReader(i));
         String l;
