@@ -25,7 +25,6 @@ public class GUIBuilder {
     public Stage window;
 
     public GUIBuilder (Stage window, GameManager gm) {
-
         this.bufferLabels = new Label[gm.getCurrBufferLength()];
         this.mainScene = buildMainScene(gm);
         this.window = window;
@@ -170,7 +169,6 @@ public class GUIBuilder {
                 //System.out.println(timePerPuzzle);
                 String minutes = String.format("%02d : ", (this.timePerPuzzle % 3600)/60);
                 String seconds = String.format("%02d", this.timePerPuzzle % 60);
-                System.out.println("timer2 time" + this.timePerPuzzle);
                 this.timePerPuzzle--;
                 minutesTimer.setText(minutes);
                 secondsTimer.setText(seconds);
@@ -189,7 +187,6 @@ public class GUIBuilder {
 
         return timerPane;
     }
-
 
     private GridPane controlPaneBuilder(GameManager gm) {
         GridPane controlPane = new GridPane();

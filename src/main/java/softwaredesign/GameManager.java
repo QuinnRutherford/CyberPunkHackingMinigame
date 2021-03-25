@@ -39,11 +39,6 @@ public class GameManager {
         }
 
         this.moves.newMove(this.puzzle.getCurrMatrixElement(row, col), nextRowCol);
-
-        //check for gameOver
-        if (this.gameOver.getGameOver(this.puzzle, this.moves)) {
-            System.out.println("You game over!!!");
-        }
     }
 
     public void undoMove() {

@@ -28,7 +28,6 @@ public class TimerClass implements Runnable {
             public void run() {
                 if (tRemaining > 0) {
                     call.run();
-                    System.out.println("timer1 time" + tRemaining);
                     tRemaining--;
                 } else {
                     endCall.run();

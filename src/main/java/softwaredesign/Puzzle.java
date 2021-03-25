@@ -7,6 +7,11 @@ public class Puzzle {
     private Sequences sequences;
     private String currPuzzle;
     private int bufferLen;
+    private ContainsQueue cQueue;
+
+    public Puzzle() {
+        cQueue = new ContainsQueue();
+    }
 
     public void getNextPuzzle() {
         this.currPuzzle = getPuzzleContent();
@@ -36,7 +41,16 @@ public class Puzzle {
         final int MIN_FILE_NUM = 1;
         final int MAX_FILE_NUM = 40;
         FileReader fr = new FileReader();
+
+        //make sure file numbers don't repeat to often
         int fileNumber = getRandomNumber(MIN_FILE_NUM, MAX_FILE_NUM);
+        while (cQueue.contains(fileNumber)) {
+            fileNumber = getRandomNumber(MIN_FILE_NUM, MAX_FILE_NUM);
+        }
+        cQueue.enQueue(fileNumber); //save current file number
+
+        System.out.println(fileNumber);
+
         String fileName = "puzzles/" + fileNumber + ".txt";
         String file = "";
         try {
