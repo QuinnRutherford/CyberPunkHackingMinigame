@@ -24,13 +24,6 @@ public class GameOver {
             }
         }
 
-        for (int i = 0; i < puzzle.getCurrNumOfSeq(); i++) {
-            if (checkCorrectSequence(puzzle.getCurrNSeq(i), currMove)) {
-                this.win = true;
-                return true;
-            }
-        }
-
         if (currMove.isCurrBufferFull())
             return true;
 

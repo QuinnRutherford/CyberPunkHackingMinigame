@@ -65,10 +65,6 @@ public class Puzzle implements Iterable<String[]> {
         return this.bufferLen;
     }
 
-    public String[] getCurrNSeq(int seqIndex) {
-        return this.sequences.getNSeq(seqIndex);
-    }
-
     public int getCurrNumOfSeq() {
         return this.sequences.getNumOfSeq();
     }
