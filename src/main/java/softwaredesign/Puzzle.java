@@ -2,8 +2,6 @@ package softwaredesign;
 
 import java.io.*;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class Puzzle implements Iterable<String[]> {
     private Matrix matrix;
