@@ -25,7 +25,6 @@ public class GUIBuilder {
     public Stage window;
 
     public GUIBuilder (Stage window, GameManager gm) {
-        this.bufferLabels = new Label[gm.getCurrBufferLength()];
         this.mainScene = buildMainScene(gm);
         this.window = window;
     }
@@ -170,7 +169,6 @@ public class GUIBuilder {
 
         Runnable everySec = () -> {
             Platform.runLater(() -> {
-                //System.out.println(timePerPuzzle);
                 String minutes = String.format("%02d : ", (this.timePerPuzzle % 3600)/60);
                 String seconds = String.format("%02d", this.timePerPuzzle % 60);
                 this.timePerPuzzle--;
@@ -265,17 +263,18 @@ public class GUIBuilder {
     private GridPane bufferPaneBuilder(GameManager gm) {
         GridPane bufferPane = new GridPane();
         int bufferLength = gm.getCurrBufferLength();
+        this.bufferLabels = new Label[bufferLength];
         String textStyle = "-fx-text-fill: green; -fx-font-size: 16; -fx-border-color: green;";
         Label title = new Label("BUFFER:  ");
         title.setStyle("-fx-text-fill: green; -fx-font-size: 16;");
         bufferPane.add(title, 0, 0);
         for(int n = 0; n < bufferLength; n++) {
             String bufferElementTxt = gm.getCurrBufferValue(n);
-            bufferLabels[n] = new Label(bufferElementTxt);
-            bufferLabels[n].setPrefWidth(30);
-            bufferLabels[n].setPrefHeight(50);
-            bufferLabels[n].setStyle(textStyle);
-            bufferPane.add(bufferLabels[n], n + 1, 0);
+            this.bufferLabels[n] = new Label(bufferElementTxt);
+            this.bufferLabels[n].setPrefWidth(30);
+            this.bufferLabels[n].setPrefHeight(50);
+            this.bufferLabels[n].setStyle(textStyle);
+            bufferPane.add(this.bufferLabels[n], n + 1, 0);
         }
         return bufferPane;
     }

@@ -49,9 +49,6 @@ public class Puzzle {
         }
         cQueue.enQueue(fileNumber); //save current file number
 
-        //TODO: REMOVE THIS
-        System.out.println(fileNumber);
-
         String fileName = "puzzles/" + fileNumber + ".txt";
         String file = "";
         try {
