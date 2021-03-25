@@ -1,7 +1,7 @@
 package softwaredesign;
 
 public class GameManager {
-    private Puzzle puzzle;
+    private final Puzzle puzzle;
     private GameOver gameOver;
     private MoveHistory moves;
     //private TimerClass gameTimer;

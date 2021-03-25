@@ -21,6 +21,11 @@ softwaredesign/Puzzle.java
  softwaredesign.Puzzle
 softwaredesign/GameOver.java
  softwaredesign.GameOver
+softwaredesign/Launcher.java
+ softwaredesign.Launcher
+softwaredesign/TimerClass.java
+ softwaredesign.TimerClass
+ softwaredesign.TimerClass$1
 softwaredesign/Main.java
  softwaredesign.Main
 softwaredesign/GameManager.java
@@ -33,8 +38,3 @@ softwaredesign/GUIBuilder.java
  softwaredesign.GUIBuilder$4
  softwaredesign.GUIBuilder$5
  softwaredesign.GUIBuilder$6
-softwaredesign/TimerClass.java
- softwaredesign.TimerClass
- softwaredesign.TimerClass$1
-softwaredesign/Launcher.java
- softwaredesign.Launcher
