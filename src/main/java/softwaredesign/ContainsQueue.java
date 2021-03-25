@@ -13,8 +13,7 @@ public class ContainsQueue {
     public void enQueue(int newItem) {
         if (this.currItem == SIZE-1)    //at last index
             this.currItem = 0;          //go to 0
-        this.items[this.currItem] = newItem;
-
+        this.items[this.currItem++] = newItem;
     }
 
     public boolean contains(int toFind) {
