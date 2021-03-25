@@ -11,8 +11,7 @@ public class FileReader {
     public String readFile(String fileName) throws IOException {
         //System.out.println("getResourcesAsStream : " + fileName);
         InputStream is = getFileFromResourceAsStream(fileName);
-        String output = inputStreamToString(is);
-        return output;
+        return inputStreamToString(is);
     }
 
     private InputStream getFileFromResourceAsStream(String fileName) {
@@ -29,7 +28,7 @@ public class FileReader {
         }
     }
 
-    public static String inputStreamToString(InputStream i) throws IOException {
+    private static String inputStreamToString(InputStream i) throws IOException {
         String fileContent = "";
         BufferedReader r = new BufferedReader(new InputStreamReader(i));
         String l;

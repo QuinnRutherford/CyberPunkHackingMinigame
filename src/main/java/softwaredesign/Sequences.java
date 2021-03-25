@@ -27,15 +27,4 @@ public final class Sequences {
     public int getNumOfSeq() {
         return sequences.length;
     }
-
-    public void printSequences() {
-        for(int i = 0; i < this.sequences.length; i++){
-            System.out.print((i + 1) + ": ");
-            for (int j = 0; j < this.sequences[i].length; j++){
-                System.out.print(this.sequences[i][j]);
-                if(j < this.sequences[i].length - 1) System.out.print(", ");
-            }
-            System.out.println();
-        }
-    }
 }
