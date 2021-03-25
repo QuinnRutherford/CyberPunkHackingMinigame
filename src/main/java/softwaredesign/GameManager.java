@@ -9,10 +9,8 @@ public class GameManager {
 
     public GameManager() {
         this.puzzle = new Puzzle();
-
         this.puzzle.getNextPuzzle();
         this.moves = new MoveHistory(this.puzzle.getBufferLen());
-
         this.gameOver = new GameOver();
     }
 
@@ -24,9 +22,9 @@ public class GameManager {
 
     public void addElementToBuffer(int row, int col) {
         //check if move is allowed
-        if (this.moves.getCurrAxis() == GameState.rowCol.ROW && this.moves.getCurrRowCol() != row)
+        if (this.moves.getCurrAxis() == GameState.rowCol.ROW && this.moves.getCurrNumRowCol() != row)
             return;
-        else if (this.moves.getCurrAxis() == GameState.rowCol.COL && this.moves.getCurrRowCol() != col)
+        else if (this.moves.getCurrAxis() == GameState.rowCol.COL && this.moves.getCurrNumRowCol() != col)
             return;
 
         //execute move
@@ -84,6 +82,4 @@ public class GameManager {
     public boolean getResult() {
         return this.gameOver.getResult();
     }
-
 }
-

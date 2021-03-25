@@ -2,9 +2,9 @@ package softwaredesign;
 
 public class ContainsQueue {
     private final int SIZE = 5;
-    private int currItem, items[];
+    private int currItem;
+    private int items[];
 
-    //enter 5 elements and remove and replace with oldest ones
     public ContainsQueue() {
         this.items = new int[SIZE];
         this.currItem = 0;
