@@ -7,13 +7,19 @@ public class GameManager {
     private GameOver gameOver;
     private MoveHistory moves;
 
-    public final int timePerPuzzle = 62;
+    public final int timePerPuzzle = 15;
 
-    public GameManager() {
+    private static GameManager gm = new GameManager();
+
+    private GameManager() {
         this.puzzle = new Puzzle();
         this.puzzle.getNextPuzzle();
         this.moves = new MoveHistory(this.puzzle.getBufferLen());
         this.gameOver = new GameOver();
+    }
+
+    public static GameManager getInstance() {
+        return gm;
     }
 
     public void restartGame() {

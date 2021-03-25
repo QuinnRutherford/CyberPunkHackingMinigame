@@ -5,7 +5,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private final GameManager gm = new GameManager();
+    private final GameManager gm = GameManager.getInstance();
 
     public static void main (String[] args) {
         Application.launch(args);
