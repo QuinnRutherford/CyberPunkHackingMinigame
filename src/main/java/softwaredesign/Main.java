@@ -21,5 +21,7 @@ public class Main extends Application {
         primaryStage.setTitle("CyberPunk Hacking Mini-game");
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(event -> { System.exit(0); });
     }
 }

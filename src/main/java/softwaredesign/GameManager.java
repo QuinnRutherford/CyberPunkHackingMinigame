@@ -4,9 +4,8 @@ public class GameManager {
     private final Puzzle puzzle;
     private GameOver gameOver;
     private MoveHistory moves;
-    //private TimerClass gameTimer;
 
-    public final int timePerPuzzle = 10;
+    public final int timePerPuzzle = 62;
 
     public GameManager() {
         this.puzzle = new Puzzle();

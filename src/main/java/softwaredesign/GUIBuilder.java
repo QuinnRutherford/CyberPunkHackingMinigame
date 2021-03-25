@@ -177,7 +177,6 @@ public class GUIBuilder {
 
         Runnable over = () -> {
             Platform.runLater(() -> {
-                System.out.println("over");
                 restartGame(gm);
             });
         };
@@ -329,7 +328,7 @@ public class GUIBuilder {
     }
 
     private void restartGame(GameManager gm) {
-        timer.timerTask.cancel();
+        this.timer.timerTask.cancel();
         gm.restartGame();
         this.mainScene = buildMainScene(gm);
         this.window.setScene(this.mainScene);
