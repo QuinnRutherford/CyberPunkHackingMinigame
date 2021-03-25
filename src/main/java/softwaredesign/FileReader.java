@@ -9,7 +9,12 @@ public class FileReader {
 
     public String readFile(String fileName) throws IOException {
         InputStream is = getFileFromResourceAsStream(fileName);
-        return inputStreamToString(is);
+        String fileContent = inputStreamToString(is);
+        if(fileContent.equals("")){
+            System.out.println("Game unable to read file from /puzzles");
+            System.exit(1);
+        }
+        return fileContent;
     }
 
     private InputStream getFileFromResourceAsStream(String fileName) {
