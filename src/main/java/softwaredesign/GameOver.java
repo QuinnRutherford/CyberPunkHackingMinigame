@@ -1,5 +1,7 @@
 package softwaredesign;
 
+import java.util.Iterator;
+
 public class GameOver {
     private boolean gameOver;
     private boolean win;
@@ -15,12 +17,16 @@ public class GameOver {
     }
 
     private boolean updateGameOver(Puzzle puzzle, MoveHistory currMove) {
-        for (int i = 0; i < puzzle.getCurrNumberOfSeq(); i++) {
-            if (checkCorrectSequence(puzzle.getCurrNSeq(i), currMove)) {
+        for (String[] seq : puzzle) {
+            if (checkCorrectSequence(seq, currMove)) {
                 this.win = true;
                 return true;
             }
         }
+
+        if (currMove.isCurrBufferFull())
+            return true;
+
         return false;
     }
 
@@ -36,6 +42,7 @@ public class GameOver {
         }
         return bufString.contains(seqString);
     }
+
     public boolean getResult(){
         return this.win;
     }

@@ -6,7 +6,6 @@ public final class GameState {
         COL
     }
 
-    //true means row must be selected, false means column
     private rowCol axis;
     private int numRowCol;
     private Buffer buffer;
@@ -16,13 +15,6 @@ public final class GameState {
         this.axis = rowCol.ROW;
         this.numRowCol = 0;
         this.buffer = new Buffer(bufferLen);
-    }
-
-    //copy constructor
-    public GameState(GameState gsToCopy) {
-        this.buffer = gsToCopy.getBuffer();
-        this.numRowCol = gsToCopy.numRowCol;
-        this.axis = gsToCopy.axis;
     }
 
     public GameState(GameState prevGS, String valueAddToBuffer, int newNumRowCol) {
@@ -50,17 +42,10 @@ public final class GameState {
     }
 
     private Buffer getBuffer() {
-        Buffer copyBuffer = new Buffer(this.buffer);
-        return copyBuffer;
+        return this.buffer;
     }
 
     public int getBufferSize() {
         return this.buffer.getSize();
-    }
-
-    public void printGameState() {
-        System.out.println("----Buffer---");
-        buffer.printBuffer();
-        System.out.println("----------------");
     }
 }

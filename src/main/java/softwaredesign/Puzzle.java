@@ -1,12 +1,18 @@
 package softwaredesign;
 
 import java.io.*;
+import java.util.Iterator;
 
-public class Puzzle {
+public class Puzzle implements Iterable<String[]> {
     private Matrix matrix;
     private Sequences sequences;
     private String currPuzzle;
     private int bufferLen;
+    private ContainsQueue cQueue;
+
+    public Puzzle() {
+        cQueue = new ContainsQueue();
+    }
 
     public void getNextPuzzle() {
         this.currPuzzle = getPuzzleContent();
@@ -36,7 +42,14 @@ public class Puzzle {
         final int MIN_FILE_NUM = 1;
         final int MAX_FILE_NUM = 40;
         FileReader fr = new FileReader();
+
+        //make sure file numbers don't repeat to often
         int fileNumber = getRandomNumber(MIN_FILE_NUM, MAX_FILE_NUM);
+        while (cQueue.contains(fileNumber)) {
+            fileNumber = getRandomNumber(MIN_FILE_NUM, MAX_FILE_NUM);
+        }
+        cQueue.enQueue(fileNumber); //save current file number
+
         String fileName = "puzzles/" + fileNumber + ".txt";
         String file = "";
         try {
@@ -52,12 +65,8 @@ public class Puzzle {
         return this.bufferLen;
     }
 
-    public String[] getCurrNSeq(int seqIndex) {
-        return this.sequences.getNSeq(seqIndex);
-    }
-
-    public int getCurrNumberOfSeq() {
-        return this.sequences.getNumberOfSeq();
+    public int getCurrNumOfSeq() {
+        return this.sequences.getNumOfSeq();
     }
 
     public String getCurrMatrixElement(int row, int col) {
@@ -66,5 +75,10 @@ public class Puzzle {
 
     public int getCurrMatrixDims() {
         return this.matrix.getMatrixDims();
+    }
+
+    @Override
+    public Iterator<String[]> iterator() {
+        return this.sequences;
     }
 }

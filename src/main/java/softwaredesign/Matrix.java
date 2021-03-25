@@ -22,23 +22,4 @@ public final class Matrix {
     public int getMatrixDims() {
         return this.matrix.length;
     }
-
-    public void printMatrix() {
-        System.out.print("  ");
-        for (int i = 0; i < this.matrix.length; i++) {
-            System.out.print((i + 1) + "   ");
-        }
-        System.out.println();
-
-        for(int i = 0; i < this.matrix.length; i++) {
-            System.out.print((i + 1) + " ");
-
-            for(int j = 0; j < this.matrix[i].length; j++) {
-
-                System.out.print(this.matrix[i][j]);
-                if(j < this.matrix.length - 1) System.out.print("  ");
-            }
-            System.out.println();
-        }
-    }
 }

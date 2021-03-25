@@ -1,30 +1,27 @@
 package softwaredesign;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.net.URL;
-
 public class Main extends Application {
-    static int timePerPuzzle = 60; //In seconds
+    private final GameManager gm = GameManager.getInstance();
 
     public static void main (String[] args) {
-        Thread gameThread = new Thread(new GameManager());
-        gameThread.start();
         Application.launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        /*URL url = new File("src/main/resources/timer.fxml").toURI().toURL();
-        Parent root = FXMLLoader.load(url);
-        primaryStage.setTitle("Timer");
-        primaryStage.setScene(new Scene(root, 600, 200));
-        primaryStage.show();*/
-    }
+    public void start(Stage primaryStage) {
+        GUIBuilder guiBuilder = new GUIBuilder(primaryStage, gm);
+        Scene scene = guiBuilder.getMainScene();
+        //tell scene that new values are displayed
 
+        primaryStage.setResizable(false);
+        primaryStage.setTitle("CyberPunk Hacking Mini-game");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        primaryStage.setOnCloseRequest(event -> { System.exit(0); });
+    }
 }

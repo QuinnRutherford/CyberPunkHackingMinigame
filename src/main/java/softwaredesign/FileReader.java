@@ -6,12 +6,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FileReader {
-
     public String readFile(String fileName) throws IOException {
-        //System.out.println("getResourcesAsStream : " + fileName);
         InputStream is = getFileFromResourceAsStream(fileName);
-        String output = inputStreamToString(is);
-        return output;
+        String fileContent = inputStreamToString(is);
+        if(fileContent.equals("")){
+            System.out.println("Game unable to read file from /puzzles");
+            System.exit(1);
+        }
+        return fileContent;
     }
 
     private InputStream getFileFromResourceAsStream(String fileName) {
@@ -28,12 +30,11 @@ public class FileReader {
         }
     }
 
-    public static String inputStreamToString(InputStream i) throws IOException {
+    private String inputStreamToString(InputStream i) throws IOException {
         String fileContent = "";
         BufferedReader r = new BufferedReader(new InputStreamReader(i));
         String l;
         while((l = r.readLine()) != null) {
-            //System.out.println("LINE: "+l);
             fileContent += l + "\n";
         }
         i.close();

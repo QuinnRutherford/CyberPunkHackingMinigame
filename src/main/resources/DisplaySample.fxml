@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="softwaredesign.Controller">
    <children>
-      <GridPane layoutX="45.0" layoutY="123.0" prefHeight="240.0" prefWidth="472.0">
+      <GridPane fx:id="matrixPane" layoutX="45.0" layoutY="123.0" prefHeight="240.0" prefWidth="472.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -22,33 +25,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 
          </rowConstraints>
-         <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="1A" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="3C" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="6B" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="1F" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="8E" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="E9" GridPane.columnIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="2D" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="2B" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="7F" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="E9" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="44" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="1C" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="4A" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="8B" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="6C" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="2B" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="3H" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="5F" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="8A" GridPane.columnIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="7D" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="9E" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="5G" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="3A" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="2B" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="38.0" text="4H" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-         </children>
       </GridPane>
 
 
