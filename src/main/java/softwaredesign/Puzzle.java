@@ -1,8 +1,11 @@
 package softwaredesign;
 
 import java.io.*;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public class Puzzle {
+public class Puzzle implements Iterable<String[]> {
     private Matrix matrix;
     private Sequences sequences;
     private String currPuzzle;
@@ -78,5 +81,10 @@ public class Puzzle {
 
     public int getCurrMatrixDims() {
         return this.matrix.getMatrixDims();
+    }
+
+    @Override
+    public Iterator<String[]> iterator() {
+        return this.sequences;
     }
 }

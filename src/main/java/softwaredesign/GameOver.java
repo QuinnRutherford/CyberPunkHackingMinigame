@@ -1,5 +1,7 @@
 package softwaredesign;
 
+import java.util.Iterator;
+
 public class GameOver {
     private boolean gameOver;
     private boolean win;
@@ -15,6 +17,13 @@ public class GameOver {
     }
 
     private boolean updateGameOver(Puzzle puzzle, MoveHistory currMove) {
+        for (String[] seq : puzzle) {
+            if (checkCorrectSequence(seq, currMove)) {
+                this.win = true;
+                return true;
+            }
+        }
+
         for (int i = 0; i < puzzle.getCurrNumOfSeq(); i++) {
             if (checkCorrectSequence(puzzle.getCurrNSeq(i), currMove)) {
                 this.win = true;

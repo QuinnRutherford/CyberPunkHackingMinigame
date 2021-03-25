@@ -125,6 +125,7 @@ public class GUIBuilder {
 
         int numberOfSeq = gm.getCurrNumOfSeq();
         Label[] seqLabels = new Label[numberOfSeq];
+        /*
         for(int n = 0; n < numberOfSeq; n++){
             String[] labelTxt = gm.getCurrNSeq(n);
             StringBuilder labelTxtCombined = new StringBuilder();
@@ -140,6 +141,25 @@ public class GUIBuilder {
             seqLabels[n].setPrefHeight(50);
             seqLabels[n].setStyle(textStyle);
             sequencePane.add(seqLabels[n], 0, n + 1);
+        }
+        */
+        int sequenceIndex = 0;
+        for(String[] seq : gm.getSequencesIterator()) {
+            String[] labelTxt = seq;
+            StringBuilder labelTxtCombined = new StringBuilder();
+            for (int i = 0; i < labelTxt.length; i++) {
+                if (i == labelTxt.length-1) {
+                    labelTxtCombined.append(labelTxt[i]);
+                } else {
+                    labelTxtCombined.append(labelTxt[i]).append("  ");
+                }
+            }
+            seqLabels[sequenceIndex] = new Label(labelTxtCombined.toString());
+            seqLabels[sequenceIndex].setPrefWidth(120);
+            seqLabels[sequenceIndex].setPrefHeight(50);
+            seqLabels[sequenceIndex].setStyle(textStyle);
+            sequencePane.add(seqLabels[sequenceIndex], 0, sequenceIndex + 1);
+            sequenceIndex++;
         }
         return sequencePane;
     }
@@ -179,7 +199,7 @@ public class GUIBuilder {
 
         Runnable over = () -> {
             Platform.runLater(() -> {
-                restartGame(gm);
+                setResultScene(gm);
             });
         };
 

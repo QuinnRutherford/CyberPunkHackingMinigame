@@ -1,5 +1,7 @@
 package softwaredesign;
 
+import java.util.Iterator;
+
 public class GameManager {
     private final Puzzle puzzle;
     private GameOver gameOver;
@@ -59,10 +61,6 @@ public class GameManager {
         return this.moves.getCurrAxis();
     }
 
-    public String[] getCurrNSeq(int index) {
-        return this.puzzle.getCurrNSeq(index);
-    }
-
     public String getCurrMatrixValueAt(int row, int col) {
         return this.puzzle.getCurrMatrixElement(row, col);
     }
@@ -81,5 +79,10 @@ public class GameManager {
 
     public boolean getResult() {
         return this.gameOver.getResult();
+    }
+
+    //TODO: add to class diagram
+    public Iterable<String[]> getSequencesIterator() {
+        return this.puzzle;
     }
 }
