@@ -23,12 +23,6 @@ public final class Sequences implements Iterator<String[]>{
         }
     }
 
-    public String[] getNSeq(int seqIndex) {
-        String[] seqCopy = new String[this.sequences[seqIndex].length];
-        System.arraycopy(this.sequences[seqIndex], 0, seqCopy, 0, seqCopy.length);
-        return seqCopy;
-    }
-
     public int getNumOfSeq() {
         return sequences.length;
     }

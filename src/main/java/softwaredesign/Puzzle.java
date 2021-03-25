@@ -2,8 +2,6 @@ package softwaredesign;
 
 import java.io.*;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class Puzzle implements Iterable<String[]> {
     private Matrix matrix;
@@ -65,10 +63,6 @@ public class Puzzle implements Iterable<String[]> {
 
     public int getBufferLen(){
         return this.bufferLen;
-    }
-
-    public String[] getCurrNSeq(int seqIndex) {
-        return this.sequences.getNSeq(seqIndex);
     }
 
     public int getCurrNumOfSeq() {

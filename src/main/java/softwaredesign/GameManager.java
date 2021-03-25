@@ -1,7 +1,5 @@
 package softwaredesign;
 
-import java.util.Iterator;
-
 public class GameManager {
     private final Puzzle puzzle;
     private GameOver gameOver;
@@ -87,7 +85,6 @@ public class GameManager {
         return this.gameOver.getResult();
     }
 
-    //TODO: add to class diagram
     public Iterable<String[]> getSequencesIterator() {
         return this.puzzle;
     }

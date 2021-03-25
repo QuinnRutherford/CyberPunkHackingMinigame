@@ -125,24 +125,6 @@ public class GUIBuilder {
 
         int numberOfSeq = gm.getCurrNumOfSeq();
         Label[] seqLabels = new Label[numberOfSeq];
-        /*
-        for(int n = 0; n < numberOfSeq; n++){
-            String[] labelTxt = gm.getCurrNSeq(n);
-            StringBuilder labelTxtCombined = new StringBuilder();
-            for (int i = 0; i < labelTxt.length; i++) {
-                if (i == labelTxt.length-1) {
-                    labelTxtCombined.append(labelTxt[i]);
-                } else {
-                    labelTxtCombined.append(labelTxt[i]).append("  ");
-                }
-            }
-            seqLabels[n] = new Label(labelTxtCombined.toString());
-            seqLabels[n].setPrefWidth(120);
-            seqLabels[n].setPrefHeight(50);
-            seqLabels[n].setStyle(textStyle);
-            sequencePane.add(seqLabels[n], 0, n + 1);
-        }
-        */
         int sequenceIndex = 0;
         for(String[] seq : gm.getSequencesIterator()) {
             String[] labelTxt = seq;
