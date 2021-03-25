@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+//TODO: CLEAN COMMENTS OUT OF CLASS
 public class FileReader {
 
     public String readFile(String fileName) throws IOException {
