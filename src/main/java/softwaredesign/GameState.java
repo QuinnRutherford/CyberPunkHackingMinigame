@@ -48,11 +48,4 @@ public final class GameState {
     public int getBufferSize() {
         return this.buffer.getSize();
     }
-
-    //TODO: REMOVE THIS
-    public void printGameState() {
-        System.out.println("----Buffer---");
-        buffer.printBuffer();
-        System.out.println("----------------");
-    }
 }

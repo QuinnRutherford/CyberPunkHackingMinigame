@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-//TODO: CLEAN COMMENTS OUT OF CLASS
 public class FileReader {
 
     public String readFile(String fileName) throws IOException {
-        //System.out.println("getResourcesAsStream : " + fileName);
         InputStream is = getFileFromResourceAsStream(fileName);
         return inputStreamToString(is);
     }
@@ -33,7 +31,6 @@ public class FileReader {
         BufferedReader r = new BufferedReader(new InputStreamReader(i));
         String l;
         while((l = r.readLine()) != null) {
-            //System.out.println("LINE: "+l);
             fileContent += l + "\n";
         }
         i.close();

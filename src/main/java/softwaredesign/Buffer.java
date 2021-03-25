@@ -35,16 +35,4 @@ public final class Buffer {
         System.arraycopy(this.buffer, 0, bufferCopy, 0, this.buffer.length);
         return bufferCopy;
     }
-
-    //TODO: REMOVE AFTER COMPLETE
-    public void printBuffer() {
-        for (int i=0; i < this.buffer.length; i++) {
-            if (this.buffer[i] == null) {
-                System.out.print("_");
-            } else {
-                System.out.print(this.buffer[i] + " ");
-            }
-        }
-        System.out.println();
-    }
 }
