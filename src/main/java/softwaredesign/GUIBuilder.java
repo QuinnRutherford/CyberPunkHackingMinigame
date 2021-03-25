@@ -76,7 +76,11 @@ public class GUIBuilder {
         label.setStyle("-fx-text-align: center; -fx-text-fill: green; -fx-font-size: 40");
         label.setPrefWidth(300);
         label.setPrefHeight(200);
+        Label click = new Label("Click to restart");
+        click.setStyle("-fx-text-align: center; -fx-text-fill: gray; -fx-font-size: 12");
         grid.add(label, 0, 0);
+        grid.add(click, 0, 1);
+        grid.setOnMouseClicked(e -> restartGame(gm));
         return new Scene(grid);
     }
 
