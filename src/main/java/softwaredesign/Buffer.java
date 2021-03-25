@@ -10,12 +10,6 @@ public final class Buffer {
         this.size = 0;
     }
 
-    //copy constructor
-    public Buffer(Buffer bufferToCopy) {
-        this.buffer = bufferToCopy.getValues();
-        this.size = bufferToCopy.getSize();
-    }
-
     //for creating a new buffer with old values + newest value
     public Buffer(Buffer prevBuffer, String newValue) {
         this.buffer = new String[prevBuffer.getValues().length];
@@ -42,6 +36,7 @@ public final class Buffer {
         return bufferCopy;
     }
 
+    //TODO: REMOVE AFTER COMPLETE
     public void printBuffer() {
         for (int i=0; i < this.buffer.length; i++) {
             if (this.buffer[i] == null) {

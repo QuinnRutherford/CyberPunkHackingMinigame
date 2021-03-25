@@ -17,13 +17,6 @@ public final class GameState {
         this.buffer = new Buffer(bufferLen);
     }
 
-    //copy constructor
-    public GameState(GameState gsToCopy) {
-        this.buffer = gsToCopy.getBuffer();
-        this.numRowCol = gsToCopy.numRowCol;
-        this.axis = gsToCopy.axis;
-    }
-
     public GameState(GameState prevGS, String valueAddToBuffer, int newNumRowCol) {
         if (prevGS.getAxis() == rowCol.ROW) {
             this.axis = rowCol.COL;
@@ -49,14 +42,14 @@ public final class GameState {
     }
 
     private Buffer getBuffer() {
-        Buffer copyBuffer = new Buffer(this.buffer);
-        return copyBuffer;
+        return this.buffer;
     }
 
     public int getBufferSize() {
         return this.buffer.getSize();
     }
 
+    //TODO: REMOVE THIS
     public void printGameState() {
         System.out.println("----Buffer---");
         buffer.printBuffer();
