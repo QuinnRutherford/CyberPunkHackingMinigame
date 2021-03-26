@@ -34,3 +34,22 @@ softwaredesign/GUIBuilder.java
  softwaredesign.GUIBuilder$4
  softwaredesign.GUIBuilder$5
  softwaredesign.GUIBuilder$6
+softwaredesign/TimerClass.java
+ softwaredesign.TimerClass
+ softwaredesign.TimerClass$1
+softwaredesign/Puzzle.java
+ softwaredesign.Puzzle
+softwaredesign/GameOver.java
+ softwaredesign.GameOver
+softwaredesign/Main.java
+ softwaredesign.Main
+softwaredesign/GameManager.java
+ softwaredesign.GameManager
+softwaredesign/GUIBuilder.java
+ softwaredesign.GUIBuilder
+ softwaredesign.GUIBuilder$1
+ softwaredesign.GUIBuilder$2
+ softwaredesign.GUIBuilder$3
+ softwaredesign.GUIBuilder$4
+ softwaredesign.GUIBuilder$5
+ softwaredesign.GUIBuilder$6
