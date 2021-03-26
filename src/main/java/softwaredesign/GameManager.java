@@ -11,9 +11,7 @@ public class GameManager {
 
     private GameManager() {
         this.puzzle = new Puzzle();
-        this.puzzle.getNextPuzzle();
-        this.moves = new MoveHistory(this.puzzle.getBufferLen());
-        this.gameOver = new GameOver();
+        restartGame();
     }
 
     public static GameManager getInstance() {
@@ -46,7 +44,6 @@ public class GameManager {
 
     public void undoMove() {
         this.moves.undoMove();
-        //this.moves.printCurrGameState();
     }
 
     public int getCurrMatrixDims() {
