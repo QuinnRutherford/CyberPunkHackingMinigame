@@ -1,91 +1,88 @@
 package softwaredesign;
 
-import java.util.Scanner;
-
-public class GameManager implements Runnable {
-    private Puzzle puzzle;
-    private Matrix matrix;
-    private Sequences sequences;
+public class GameManager {
+    private final Puzzle puzzle;
     private GameOver gameOver;
     private MoveHistory moves;
 
-    public GameManager() {
+    public final int timePerPuzzle = 15;
+
+    private static GameManager gm = new GameManager();
+
+    private GameManager() {
         this.puzzle = new Puzzle();
-        this.setupPuzzle();
-        moves = new MoveHistory(this.puzzle.getBufferLen());
+        restartGame();
+    }
+
+    public static GameManager getInstance() {
+        return gm;
+    }
+
+    public void restartGame() {
+        this.puzzle.getNextPuzzle();
+        this.moves = new MoveHistory(this.puzzle.getBufferLen());
         this.gameOver = new GameOver();
     }
 
-    private void setupPuzzle() {
-        this.puzzle.getNextPuzzle();
-        this.matrix = new Matrix(this.puzzle.getMatrixTxt());
-        this.sequences = new Sequences(this.puzzle.getSeqTxt());
-    }
+    public void addElementToBuffer(int row, int col) {
+        //check if move is allowed
+        if (this.moves.getCurrAxis() == GameState.rowCol.ROW && this.moves.getCurrNumRowCol() != row)
+            return;
+        else if (this.moves.getCurrAxis() == GameState.rowCol.COL && this.moves.getCurrNumRowCol() != col)
+            return;
 
-    @Override
-    public void run() {
-        runGameLoop();
-    }
-
-    public void printGame() {
-        System.out.println(("\nSequences: "));
-        this.sequences.printSequences();
-        System.out.println("\nMatrix: ");
-        this.matrix.printMatrix();
-        moves.printCurrGameState();
-    }
-
-    public void runGameLoop() {
-        Scanner scanner = new Scanner(System.in);
-        //Core game-loop
-        while (!gameOver.getGameOver(this.sequences, this.moves)){
-            if(this.moves.isCurrBufferFull()){
-                break;
-            }
-            printGame();
-            //get user input
-            String userChoice;
-            int nextRowCol;
-            if (moves.getCurrAxis() == GameState.rowCol.ROW) {
-                int currRow = moves.getCurrNumRowCol();
-                System.out.println("The current row is: " + (currRow + 1));
-                int col = 0;
-                while (col <= 0 || col > matrix.getMatrixDims()) {
-                    try {
-                        System.out.println("Choose a column:");
-                        String colStr = scanner.nextLine();
-                        col = Integer.parseInt(colStr);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid format");
-                    }
-                }
-                userChoice = this.matrix.getMatrixElement(currRow, col - 1);
-                nextRowCol = col - 1;
-            } else {
-                int currCol = moves.getCurrNumRowCol();
-                System.out.println("The current column is: " + (currCol + 1));
-                int row = 0;
-                while (row <= 0 || row > matrix.getMatrixDims()) {
-                    try {
-                        System.out.println("Choose a row:");
-                        String rowStr = scanner.nextLine();
-                        row = Integer.parseInt(rowStr);
-                    } catch (NumberFormatException e) {
-                        System.out.println("Invalid format");
-                    }
-                }
-                userChoice = this.matrix.getMatrixElement(row - 1, currCol);
-                nextRowCol = row - 1;
-            }
-            moves.newMove(userChoice, nextRowCol);
-        }
-        moves.printCurrGameState();
-        if(gameOver.getResult()){
-            System.out.println("YOU WIN!!!");
+        //execute move
+        int nextRowCol;
+        if (this.moves.getCurrAxis() == GameState.rowCol.ROW) {
+            nextRowCol = col;
         } else {
-            System.out.println("YOU LOSE!!!");
+            nextRowCol = row;
         }
-        System.exit(0);
+
+        this.moves.newMove(this.puzzle.getCurrMatrixElement(row, col), nextRowCol);
+    }
+
+    public void undoMove() {
+        this.moves.undoMove();
+    }
+
+    public int getCurrMatrixDims() {
+        return this.puzzle.getCurrMatrixDims();
+    }
+
+    public int getCurrNumOfSeq() {
+        return this.puzzle.getCurrNumOfSeq();
+    }
+
+    public int getCurrNumRowCol() {
+        return this.moves.getCurrNumRowCol();
+    }
+
+    public GameState.rowCol getCurrAxis() {
+        return this.moves.getCurrAxis();
+    }
+
+    public String getCurrMatrixValueAt(int row, int col) {
+        return this.puzzle.getCurrMatrixElement(row, col);
+    }
+
+    public int getCurrBufferLength() {
+        return this.moves.getCurrBufferLength();
+    }
+
+    public String getCurrBufferValue(int n) {
+        return this.moves.getCurrBufferValues()[n];
+    }
+
+    public boolean isGameOver() {
+        return this.gameOver.getGameOver(this.puzzle, this.moves);
+    }
+
+    public boolean getResult() {
+        return this.gameOver.getResult();
+    }
+
+    public Iterable<String[]> getSequencesIterator() {
+        return this.puzzle;
     }
 }
-

@@ -1,15 +1,21 @@
+softwaredesign/ContainsQueue.java
+ softwaredesign.ContainsQueue
 softwaredesign/Puzzle.java
  softwaredesign.Puzzle
 softwaredesign/GameOver.java
  softwaredesign.GameOver
 softwaredesign/Sequences.java
  softwaredesign.Sequences
+softwaredesign/GUIBuilder.java
+ softwaredesign.GUIBuilder
+ softwaredesign.GUIBuilder$1
+ softwaredesign.GUIBuilder$2
+ softwaredesign.GUIBuilder$3
+ softwaredesign.GUIBuilder$4
+ softwaredesign.GUIBuilder$5
+ softwaredesign.GUIBuilder$6
 softwaredesign/MoveHistory.java
  softwaredesign.MoveHistory
-softwaredesign/Test.java
- softwaredesign.Test
-softwaredesign/Controller.java
- softwaredesign.Controller
 softwaredesign/Matrix.java
  softwaredesign.Matrix
 softwaredesign/Main.java
@@ -21,10 +27,10 @@ softwaredesign/FileReader.java
 softwaredesign/GameState.java
  softwaredesign.GameState
  softwaredesign.GameState$rowCol
-softwaredesign/Launcher.java
- softwaredesign.Launcher
 softwaredesign/TimerClass.java
  softwaredesign.TimerClass
  softwaredesign.TimerClass$1
+softwaredesign/Launcher.java
+ softwaredesign.Launcher
 softwaredesign/Buffer.java
  softwaredesign.Buffer

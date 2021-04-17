@@ -1,6 +1,11 @@
 package softwaredesign;
 
-public final class Sequences {
+import java.util.Iterator;
+
+public final class Sequences implements Iterator<String[]>{
+    //for iterator
+    int iteratorIndex = 0;
+
     private final String[][] sequences;
 
     public Sequences(String seqTxt) {
@@ -18,24 +23,24 @@ public final class Sequences {
         }
     }
 
-    public String[] getNSeq(int seqIndex) {
-        String[] seqCopy = new String[this.sequences[seqIndex].length];
-        System.arraycopy(this.sequences[seqIndex], 0, seqCopy, 0, seqCopy.length);
-        return seqCopy;
-    }
-
-    public int getNumberOfSeq() {
+    public int getNumOfSeq() {
         return sequences.length;
     }
 
-    public void printSequences() {
-        for(int i = 0; i < this.sequences.length; i++){
-            System.out.print((i + 1) + ": ");
-            for (int j = 0; j < this.sequences[i].length; j++){
-                System.out.print(this.sequences[i][j]);
-                if(j < this.sequences[i].length - 1) System.out.print(", ");
-            }
-            System.out.println();
+    @Override
+    public boolean hasNext() {
+        if (this.iteratorIndex >= this.sequences.length) {
+            this.iteratorIndex = 0; //reset iteratorIndex
+            return false;
         }
+        return true;
+    }
+
+    @Override
+    public String[] next() {
+        if (this.hasNext()) {
+            return this.sequences[iteratorIndex++];
+        }
+        return null;
     }
 }

@@ -3,28 +3,34 @@ package softwaredesign;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class TimerClass implements Runnable {
 
-    private final int time; //placeholder for timer per puzzle
-    public TimerClass(int time) {
-        this.time = time;
+    private final Runnable endCall;
+    private final Runnable call;
+    private int tRemaining; //placeholder for timer per puzzle
+    public TimerTask timerTask;
+
+    public TimerClass(int time, Runnable call, Runnable endCall) {
+        this.tRemaining = time;
+        this.call = call;
+        this.endCall = endCall;
     }
 
     @Override
     public void run() {
         Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
+        timerTask = new TimerTask() {
 
-            int tRemaining = time;
+            //int tRemaining = time;
 
             @Override
             public void run() {
-
                 if (tRemaining > 0) {
+                    call.run();
                     tRemaining--;
                 } else {
-                    System.out.println("\nTime is up!\nYOU LOSE!!!");
-                    System.exit(0);
+                    endCall.run();
                     timer.cancel();
                     timer.purge();
                 }

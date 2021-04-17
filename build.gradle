@@ -47,11 +47,12 @@ jar {
     manifest {
         attributes 'Main-Class': 'softwaredesign.Launcher'
     }
+
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     destinationDirectory = file("$rootDir/out")
     // change the assignment number in filename of the jar
-    archiveFileName = "assignment2.jar"
+    archiveFileName = "assignment3.jar"
 }
