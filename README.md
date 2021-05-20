@@ -1,3 +1,2 @@
-# Software Design 
-This is the template for the team project of the Software Design course at the Vrije Universiteit Amsterdam. 
-
+# Cyberpunk Hacknig Minigame
+A recreation of the hacking minigame from the videogame Cyberpunk 2077 in Java. The GUI was made with JavaFX. It was made by a team of three for the course Software Design at Vrije Universiteit over two months.
